@@ -1,0 +1,258 @@
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+body,
+html {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: #fff;
+	font-family: "宋体";
+}
+
+/*头部导航修改样式*/
+.reg-nav {
+	box-shadow: 0 0 0;
+	background: #FFFFFF;
+}
+.reg-nav a {
+	font-size: 0.8rem !important;
+	color: #717171;
+}
+/*登录页面样式*/
+.register {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 1.0rem;
+	left: 0;
+}
+.register .reg-pic,
+.eon-pic {
+	width: 65%;
+	height: 4.2rem;
+	margin: auto;	
+}
+.reg-pic img,
+.eon-pic img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+      /*账户密码*/
+     
+/*登录*/
+.reg-content{
+	 position: absolute;
+     top: 4.6rem;
+}
+/*注册*/
+.reg-content,
+.eon-content {
+	width: 100%;
+}
+.reg-content form {
+	width: 70%;
+	margin: auto;
+}
+.account-pd label,
+.ch-enroll label
+  {
+	display: block;
+	font-size: 0.32rem;
+	text-align: center;
+	color: #cb000a;
+	letter-spacing: 3px;
+}
+.account-pd input,
+.ch-password input ,
+.ch-enroll input{
+	display: block;
+	height: 0.6rem;
+	text-align: center;
+	font-size: 0.3rem;
+	color: #6c6c6c;
+	padding: 0;
+	border: 0;
+	margin-bottom: 0.2rem !important;
+	border-bottom: 1px solid #d1d1d1;
+}
+/*提交*/
+.reg-submint {
+	width: 70%;
+	margin:0.2rem auto;
+}
+.reg-submint input {
+	display: block;
+	width: 100%;
+	height: 0.75rem;
+	border: 0;	
+	background: #cb000a;
+}
+.reg-submint .link-area {
+	margin-top:0.15rem;
+}
+.link-area a {
+	font-size: 0.25rem;
+	color: #404040;
+}
+
+
+/*注册页面*/
+.eon-content {
+	background: #fff;
+	margin-top: 1.0rem;
+}
+.eon-row {
+	display: block;
+	width: 70%;
+	margin: auto;
+	margin-top: 0.2rem;
+}
+.eon-row .eon-btn {
+	width: 100%;
+	text-decoration: none;
+	display: block;
+	font-size: 0.32rem;
+	height: 0.83rem;
+	margin-top: 15px;
+	line-height: 0.83rem;
+	text-align: center;
+	border-radius: 5px;
+}
+.eon-row .eon-btn1 {
+	color: #fff;
+	background: #cb000a;
+}
+.eon-row .eon-btn2 {
+	background: #fff;
+	color: #333333;
+	border: 1px solid #d1d1d1;
+}
+.eon-else {
+	color: #505050;
+}
+.eon-row ul {
+	display:block;
+	width: 90%;
+	height: 0.75rem;
+	margin-left: 10%;
+}
+.eon-row ul li {
+	display: block;
+	width: 0.6rem;
+	height: 0.6rem;
+	float: left;
+	border: 1px solid #CCCCCC;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 0.46rem;
+	margin: 0 9%;
+}
+.eon-row ul li a {
+	display: inline-block;
+	font-size: 0.43rem;
+	color: #6c6c6c;
+	line-height: 0.6rem;	
+}
+/*稍后注册*/
+.eon-later {
+	width: 80%;
+	height: 0.75rem;
+	margin: auto;
+	margin-top: 0.35rem;
+	text-align: center;
+}
+.eon-later a {
+	font-size: 0.25rem;
+	color: #505050;
+}
+.eon-later a span {
+	font-size: 0.2rem;
+	margin-left: 0.2rem;
+}
+
+
+
+/*修改密码页面 */
+.ch-password label,
+.ch-enroll label,
+.fg-password label,
+.fg-password a,
+.ch-enroll a  {
+	display: block;
+	font-size: 0.28rem;
+	text-align: center;
+	color: #505050;
+	letter-spacing: 1px;
+} 
+ 
+  
+/*加载失败页面*/
+.red-bg{
+	height: 0.9rem;
+	background: #cb000a;	
+}
+.red-bg a{
+	padding: 0.1rem 0.2rem !important;
+	font-size:0.8rem !important ;
+	color: #fff;
+}
+.load-content{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0.8rem;
+	left:0 ;
+}
+.load-pic{
+	 width: 80px;
+	 height: 100px;
+	 margin: auto;	
+	 margin-top: 4rem;
+}
+.load-pic img{
+	 width: 100%;
+	 height: 100%;
+}
+
+
+/*忘记密码*/
+.fg-password {
+	width: 100%;
+	height: 1.45rem;
+	border-bottom: 1px solid #d1d1d1;
+	margin-bottom: 0.2rem;
+}
+.fg-password .fg-input{
+	padding: 0;
+	line-height: 0;
+	height: 0.34rem;
+	color: #6c6c6c;
+	border: 0;
+	text-align: center;
+	margin-bottom: 0px;
+}
+.mui-icon-eye{
+	top: 0.08rem !important;
+	display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

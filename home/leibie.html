@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>食物分类</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/iconfont(1).css" rel="stylesheet" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/media.css" rel="stylesheet"/>
+		<style type="text/css">	
+			.head .mui-action-back,.mui-title{color: #fff;}
+			ul li{list-style-type: none;}
+			p,span,img{display: block;}
+			.nei{width: 70%;float: left;margin-left: 5%;}
+			.nei p{width: 100%;height: 40px;word-break: break-all;font-size: 12px;padding:5px 0 5px 0;line-height:18px;color: #777777;overflow:hidden;}
+			.nei img{width:30px;height: 30px;border-radius: 50%;float: left;}
+			.nei span{height: 20px;width: 26%;padding:5px 0 0 2%;color: #777777;float: left;font-size:0.3rem;}
+			.nei .time{margin-left: 35%;}
+			.ziti a{color: #777777;width: 7%;float: left;font-size: 14px;}
+			.ziti span{width: 25%;padding-left: 4%;}
+			.ziti .iconfont{font-size: 22px;}
+			.content-nei li{height:120px;border-bottom: 1px solid #cccccc;padding:10px 0 0 5%;margin-bottom: 0.1rem;cursor: pointer;}
+			.image{height: 90px;width: 25%;}
+			.content-nei ul{padding: 0;}
+			.nei-nei{width: 100%;height: inherit;position: initial;}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav head" style="background-color: #cc000b;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" ></h1>
+		</header>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll content-nei">
+				<ul class="conmain"></ul>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/ajaxmain.js"></script>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script src="../js/time.js"></script>
+		<script type="text/javascript">
+			mui.plusReady(function(){
+				var num=plus.webview.currentWebview().ms_food_type;
+				var title=plus.webview.currentWebview().ms_title;
+				var count=0;
+				ajax(num);
+				$('.mui-title').html(title);				
+				mui.init({
+					pullRefresh: {
+						container: '#pullrefresh',
+						up: {
+							contentrefresh: '正在加载...',
+							callback: pullupRefresh,
+						}
+					}
+				})
+				function pullupRefresh(){
+					setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2));
+					ajax(num);
+					}, 1000);
+				}
+				$('.conmain').on('click','.list',function(){
+					var index=$(this).index();
+					ajaxMain('/Home/Home/type',{ms_food_type:num},function(data){
+						mui.openWindow({
+			    			url: '../recipe/recipe_2.html', 
+			    			id:'recipe2',
+			    			extras:{
+			    				ms_food_id:data.aa[data.aa.length-index-1].ms_food_id
+			    			}
+		  				})
+		  			})
+				})
+			})
+			var con='';
+			function ajax(i){
+				ajaxMain('/Home/Home/type',{ms_food_type:i},
+				function(data){
+					var len=document.getElementsByClassName('list').length;
+					var leng=data.aa.length-len-1;
+					var ul='http://192.168.1.107/MS_progect/Uploads/ms_food_img/';
+					for(j=leng;j>leng-6&&j>=0;j--){
+						var time=data.aa[j].ms_food_time;
+						if(time!=null){
+							var date= new Date(Date.parse(time.replace(/-/g, "/")));
+							var a = date.getTime();
+							var getime=getDateDiff(a);
+						}else{
+							var getime=null;
+						}
+						data.aa[j].ms_food_like=data.aa[j].ms_food_like==null?0:data.aa[j].ms_food_like;
+						data.aa[j].ms_food_collection=data.aa[j].ms_food_collection==null?0:data.aa[j].ms_food_collection;
+						data.aa[j].ms_food_comment=data.aa[j].ms_food_comment==null?0:data.aa[j].ms_food_comment;
+						con+='<li class="list"><a href="javascript:;"><img class="mui-pull-left image" src="'+ul+data.aa[j].ms_food_img+'" />'
+		            	+'<div class="nei"><img src="../img/hd (3).png"/><span >'+data.aa[j].ms_food_name+'</span>'
+		               	+'<span class="time">'+getime+'</span></div>'
+		            	+'<div class="nei"><p class="">'+data.aa[j].ms_food_introduce+'</p>'
+		                +'<div class="ziti"><a href="#" class="iconfont icon-aixin"></a><span>'+data.aa[j].ms_food_like+'</span>'
+						+'<a href="#" class="iconfont icon-star-outline"></a><span>'+data.aa[j].ms_food_collection+'</span>'
+		                +'<a href="#" class="iconfont icon-liuyan"></a><span>'+data.aa[j].ms_food_comment+'</span></div>'
+		               	+' </div></a></li>'			           				        			   
+					}
+					$('.conmain').html(con);				
+				})
+			}
+		</script>
+	</body>
+
+</html>

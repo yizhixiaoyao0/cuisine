@@ -1,0 +1,238 @@
+ * {
+ 	list-style: none;
+ 	color: #777;
+ }
+ 
+ html,
+ body {
+ 	font-family: "宋体";
+ 	width: 100%;
+ 	height: 100%;
+ 	line-height: 0;
+ } 
+/* 主页面*/
+ .food_cate {
+ 	width: 100%;
+ 	height:5.0rem;
+ 	background: #f5dfd2;
+ 	position: fixed;
+ }
+ 
+ .food_cate .cate_nav {
+ 	border: 0;
+ 	box-shadow: 0 0 0;
+ 	background: #f5dfd2;
+ 	padding-top: 0.2rem;
+ 	font-size: 0.32rem;
+ }
+ 
+ .cate_nav a {
+ 	text-decoration: none;
+ 	color: #605b58;
+ 	font-size: 0.5rem;
+ }
+ 
+ /*头像+呢称+签名 */
+ .ct-header {
+ 	width: 80%;
+ 	height: 70%;
+ 	margin: auto;
+ 	padding-top:0.5rem;
+ }
+ /*头像*/
+ .ct-header .ct-portrait {
+ 	width:1.5rem;
+ 	height:1.5rem;
+ 	margin: 0 auto;
+ 	margin-top: 0.45rem;
+ 	position: relative;
+ 	border-radius: 50%;	
+ 	background-color: #fff;
+ }
+/* 头像图*/
+ .ct-portrait  img {
+ 	width: 100%;
+ 	height: 100%;
+ 	position: absolute;
+ 	top: 0;
+ 	left: 0;
+ 	border-radius:50% ;
+ }
+ /*签名*/
+ .ct-amd {
+ 	font-size:0.3rem;	
+ 	margin: auto;
+ 	margin-top: 0.1rem;
+ 	height:0.3rem;
+ 	width: 100%;
+ 	text-align: center;
+  }
+ .ct-sign {
+ 	font-size:0.25rem;	
+ }
+ /* 字体颜色   */
+ .ct-amd a {
+ 	color: #777;
+ }
+ 
+ /*上传 分享 关注 收藏 */
+ .ct-personal {   
+    position: relative;
+ 	top:-0.02rem;
+ 	color: #4d4548;
+ 	font-size: 0.25rem;		
+ }
+ .text{
+ 	font-size: 0.2rem;
+ }
+ .num{
+ 	font-size: 0.32rem;
+ 	
+ }
+ /*标题*/
+ .ct-personal .mui-segmented-control a span {
+ 	   line-height:0.4rem;	
+ }
+ /*上传*/
+.food_cate .mui-content {	
+ 	width: 100%;
+ 	margin: auto;
+ }
+
+ .food_cate .mui-content .ct-personal .mui-segmented-control a {
+ 	width: 50%;
+ }
+/* 上传菜谱标题*/
+ .ct-uploading {
+ 	width: 100%;
+ 	height:0.58rem; 
+ 	line-height:0.8rem;	
+ 	padding-left: 20px; 	
+ 	font-size:0.28rem;
+    color: #404040;
+ }
+ /*内容*/
+ .mui-control-item{
+	color: #777 !important;
+}
+
+.mui-scroll-wrapper{
+	position: relative !important;
+	height: 7.0rem !important;
+}
+.ct-boder{
+	height: 0 !important;
+	background-color:#CB000A !important;
+}
+.mui-control-content{
+	background-color: white;
+	min-height:8.52rem;
+}
+/*背景色改变*/
+ .mui-menu-pic{
+   	background: #FFFFFF !important;  	
+  }
+  .ct-menu-pic,.ct-add-pic a{
+  	height: 2.1rem;
+  }
+ .ct-menu-pic a img
+ .ct-add-pic a img {
+ 	width: 100%;
+ 	height: 100%;
+ }
+ .mui-menu-pic .mui-row .ct-menu-pic,
+ .mui-menu-pic .mui-row .ct-add-pic {
+ 	padding: 10px 10px;
+ }
+/* 上传菜谱标题*/
+ .ct-personal .mui-segmented-control a span {
+ 	display: block;		
+ }
+ .mui-active { 	
+ 	color: #cb000a !important;
+ } 
+ /* 关注*/
+ .cate-pt div {
+ 	float: left;
+ }
+/* 外框*/
+ .cate-pt {
+ 	width: 100%;
+ 	height:1.5rem;
+ 	cursor: pointer;
+ 	background: #FFFFFF;
+ 	border-bottom: 1px solid #d1d1d1;
+ }
+ /*头像*/
+ .cate-pic {
+ 	width:1.0rem;
+ 	height:1.0rem;
+ 	margin: 12px;
+ 	position: relative;
+ }
+ 
+ .cate-pic img {
+ 	width: 100%;
+ 	height: 100% !important;
+ 	position: absolute;
+ }
+ /*文本*/
+ .cate-text {
+ 	width: 50%;
+ 	height: 0.7em;
+ 	padding-top: 10px;
+ 	padding-left: 10px;
+ 	margin-top: 0.11em;
+ }
+.cate-text h3{
+	font-weight: 100;
+  	font-size: 0.3rem;
+  	color: #404040;
+  }
+ 
+ .cate-text p {	
+ 	font-size:0.23rem;
+  	color: #505050;
+ }
+  
+ .cate-text p,
+ .cate-mutual {
+ 	margin-top: 5px;
+ }
+ /*点击关注*/
+ .cate-mutual {
+ 	width: 25%;
+ 	text-align: center;
+ 	height:70px;
+ 	line-height: 70px;
+ 	text-align: right;
+ }
+ .cate-mutual a {
+ 	text-decoration: none;
+ 	color: #7c7b7b;
+ 	font-size: 2em;
+ 	padding-right:10px; 	
+ }
+ 
+ /*  收藏菜谱*/
+
+/*标题*/
+
+#item4mobile ul .collect .collect-title a{
+	color: #404040;
+	font-size: 0.28rem;
+	
+}
+#sliderProgressBar{background-color:#fff;margin-left: 8%;}
+.mui-slider>.heji a{
+	width:1.2rem;
+	height: 0.53rem;
+	float: left;
+	margin:0.05rem 0px 0.1rem 0.1rem;
+	font-size:0.28rem;
+}
+.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item {
+     border-top:none !important; 
+
+}
+	

@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>底部导航</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/iconfont.css" rel="stylesheet"/>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<style type="text/css">
+			.mui-bar-tab .mui-tab-item.mui-active{color: #cc000b;}
+		</style>    
+    </head>  
+    <body>  
+        <nav class="mui-bar mui-bar-tab" id="nav">
+		    <a class="mui-tab-item " id="a1">
+		        <span class="mui-icon mui-icon-home"></span>
+		        <span class="mui-tab-label">主页</span>
+		    </a>
+		    <a class="mui-tab-item " id="a2">
+		        <span class="mui-icon iconfont icon-caipu"></span>
+		        <span class="mui-tab-label">名人菜谱</span>
+		    </a>
+		    <a class="mui-tab-item " id="a3">
+		        <span class="mui-icon iconfont icon-iconfonticonfontcanyin"></span>
+		        <span class="mui-tab-label">美食推荐</span>
+		    </a>
+		    <a class="mui-tab-item " id="a4">
+		        <span class="mui-icon mui-icon-person"></span>
+		        <span class="mui-tab-label">我</span>
+		    </a>
+		</nav>
+        <script type="text/javascript" charset="utf-8"> 
+         mui.plusReady(function(){
+         	var num=plus.webview.currentWebview().con_user_id;        
+            mui.init({  
+                    subpages:[//先加载首页  
+                        {  
+                          url:'home_1.html',  
+                          id:'a1',  
+                          styles:{  
+                             top:'0px',  
+                             bottom:'50px'  
+                          }  
+                        }  
+                          
+                    ] 
+//                  preloadPages:[//缓存其他页面  
+//                      {  
+//                        url:'../recipe/recipe_1.html',  
+//                       id:'a2',  
+//                        styles:{  
+//                           top:'0px',  
+//                          bottom:'50px'  
+//                        }  
+//                      },  
+//                      {  
+//                        url:'../recommend/recommend3.html',  
+//                        id:'a3',  
+//                        styles:{  
+//                           top:'0px',  
+//                          bottom:'50px'  
+//                        }  
+//                      },
+//                      {  
+//                        url:'../myself/myselfindex.html',  
+//                        id:'a4',  
+//                        styles:{  
+//                           top:'0px',  
+//                          bottom:'50px'  
+//                        },
+//                        extras:{
+//                        	user_id:num
+//                        }
+//
+//                      }  
+//                  ]                        
+              }); 
+                // 获取所有Webview窗口  
+                mui.preload({
+					 	url:'../recipe/recipe_1.html',  
+                        id:'a2',  
+                        styles:{  
+                            top:'0px',  
+                            bottom:'50px'  
+                         }  
+					});
+				mui.preload({
+				 	url:'../recommend/recommend3.html',  
+                    id:'a3',  
+                    styles:{  
+                        top:'0px',  
+                        bottom:'50px'  
+                    }  
+				});
+				mui.preload({
+				 	url:'../myself/myselfindex.html',  
+                    id:'a4',  
+                    styles:{  
+                       top:'0px',  
+                       bottom:'50px'  
+                    },
+                    extras:{
+                  	   user_id:num
+                    }
+				});
+                var winAll=plus.webview.all();//获取所有窗体  
+                console.log(JSON.stringify(winAll))
+                var a1,a2,a3,a4
+                $("#nav").on("tap","#a1",function(){//点击触发   
+                    a1=plus.webview.getWebviewById("a1");  
+                    console.log(JSON.stringify(a1))   
+                    a1.show(); 
+                    a2.hide();
+                    a3.hide();
+                    a4.hide();
+                })  
+                $("#nav").on("tap","#a2",function(){//点击触发  
+					a2=plus.webview.getWebviewById("a2"); 
+                    a2.show();
+                })  
+                $("#nav").on("tap","#a3",function(){//点击触发  
+                    a3=plus.webview.getWebviewById("a3");  
+                    a3.show();                       
+                })
+                $("#nav").on("tap","#a4",function(){//点击触发  
+                    a4=plus.webview.getWebviewById("a4");                     
+                    a4.show();
+                }) 
+            })  
+        </script>   
+	</body>
+
+</html>

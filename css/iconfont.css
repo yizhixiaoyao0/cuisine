@@ -1,0 +1,59 @@
+
+@font-face {font-family: "iconfont";
+   src:url('../fonts/iconfont.ttf') format('truetype'); 
+   /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    }
+
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+}
+
+.icon-qq:before { content: "\e606"; }/*QQ*/
+
+.icon-qingchu:before { content: "\f0020"; }/*清除*/
+
+.icon-paizhao:before { content: "\e62c"; }/*照相*/
+
+.icon-star-outline:before { content: "\e634"; }/**/
+
+.icon-shoucang:before { content: "\e639"; }/*收藏*/
+
+.icon-xiaoxi:before { content: "\e649"; }/*消息*/
+
+.icon-mianxingtubiaoshuqian:before { content: "\e64e"; }/*书签*/
+
+.icon-iconfontwohover:before { content: "\e60d"; }/*我的*/
+
+.icon-iconfonticonfontcanyin:before { content: "\f02ab"; }/**/
+
+.icon-dianzan:before { content: "\e672"; }/*点赞*/
+
+.icon-weibo:before { content: "\e603"; }/*微博*/
+
+.icon-lingsheng:before { content: "\e625"; }/*铃声*/
+
+.icon-yuyin:before { content: "\e7b5"; }/*语音*/
+
+.icon-home:before { content: "\e653"; }/*主页*/
+
+.icon-chaping:before { content: "\e615"; }/*差评*/
+
+.icon-weixin:before { content: "\e600"; }/*微信*/
+
+.icon-iconfontyiguanzhu:before { content: "\e643"; }/*已关注*/
+
+.icon-zhuanfa:before { content: "\e664"; }/*转发*/
+
+.icon-jiare:before { content: "\e8c6"; }/*热，火*/
+
+.icon-caipu:before { content: "\e604"; }/*菜谱*/
+
+.icon-bianji:before { content: "\e68e"; }/*编辑 */
+
+.icon-quxiaoguanzhu:before { content: "\e609"; }/*取消关注*/
+

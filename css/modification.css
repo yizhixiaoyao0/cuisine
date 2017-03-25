@@ -1,0 +1,180 @@
+ * {
+ 	padding: 0;
+ 	list-style: none;
+ }
+ img{border: 0;}
+ body,
+ html {
+ 	width: 100%;
+ 	height: 100%;
+ 	background: #FFFFFF;
+ 	font-family: "宋体";
+ }
+ /* 头部导航修改*/
+.title{
+	padding-top: 0.15rem !important;
+	color: #404040;
+	font-weight: 600;
+}
+ .amend-head {
+ 	box-shadow: 0 0 0;
+ 	background: #FFFFFF;
+ }
+ .amend-head a {
+ 	font-size: 0.6rem !important;
+ 	color: #717171;
+ }
+ /* 头像修改*/
+ .hd-portrait {
+ 	width: 100%;
+ 	height:2.0rem;
+ 	margin-top:1.5rem;
+ 	padding-top:0.3rem;
+ }
+ 
+ .portrait,.portrait img{
+ 	 display: block;
+ 	border-radius:50% ;
+ 	border: 1px solid #FFFFFF; 	
+ }
+ 
+ .portrait { 	
+ 	padding: 0;
+ 	width:1.5rem;
+ 	height:1.5rem;
+ 	margin: auto;	
+ }
+ .portrait  img {
+ 	width: 100%;
+ 	height: 100%;
+ 	position: absolute;
+ 	top: 0;
+ 	left: 0;	
+ } 
+ /*	修改内容*/
+.select{
+	width: 100%;
+	position: absolute;
+	top: 0.6rem;
+	left: 0;	
+}
+.ad-content,.ad-form{
+	height:2.5rem;
+	font-size: 0.35rem;
+	display: block;
+	color: #414141;
+}
+ .ad-content {
+ 	width: 100%;
+ 	margin-top: 1.4rem;	 		
+ }
+ .ad-form {
+ 	width: 65%;	
+ 	padding: 10px 10px;
+ 	margin: auto;
+ }
+ 
+/* 昵称 */
+ .ad-row {
+ 	width: 100%;
+ 	height: 0.75rem;
+ 	line-height:0.8rem;
+ }
+ 
+ .ad-row input {
+ 	padding: 0 10px;
+ 	font-size:0.35rem;
+ 	border: 0;
+ 	width: 70%;
+ 	color: #616161;
+ 	height: 0.32rem;
+ }
+ /*男女单选*/
+ .cd-select {
+ 	width: 80%;
+ 	height:0.35rem;
+ }
+ .cd-select li {
+ 	width: 50%;
+ 	height:0.65rem;
+ 	line-height:0.32rem;
+ 	float: left;
+ 	padding-top:0.3rem
+ } 
+ .cd-select li a {
+ 	width: 0.35rem;
+ 	height: 0.35rem;
+ 	line-height:0.35rem ;
+ 	margin:0 0.1rem 0 0.2rem;
+ 	color: #525153;
+ 	display: block;
+ 	float: left;
+ 	border: 1px solid #777;
+ 	border-radius: 50%;
+ 	position: relative;
+ 	bottom: 0.05rem;
+ }
+ .cd-select li a>span{
+ 	font-size:0.55rem;
+ 	line-height:0.35rem;
+ 	position: absolute;
+ 	left: -0.08rem;
+ 	
+ 	
+ }
+ .cd-select li>span {
+ 	display: inline-block;
+ 	font-size:0.35rem;	
+ }
+ /*下边框线*/
+ .line {
+ 	width: 88%;
+ 	height: 0px;
+ 	border-bottom: 1px solid #d3d3d3;
+ }
+ /*签名*/ 
+ .ad-signature {
+ 	width: 100%;
+ 	height: 30px;
+ 	line-height:0.8rem;
+ }
+ .ad-signature .textarea {
+ 	width: 75%;
+ 	height: 50px;
+ 	padding: 0;
+ 	position: relative;
+ 	top: 0.3rem;
+ 	border: 0;
+ 	font-size: 0.35rem;
+ }
+ /*修改头像图片按钮位置*/
+ #picture {
+ 	position: fixed;
+ 	top: 250px;
+ 	width: 80%;
+ 	margin-left: 10%;
+ }
+ .text {
+ 	color: #404040 !important;
+ 	font-size:0.35rem;
+ }
+ .text span{
+ 	display: inline-block; 	
+ 	display: block;
+ 	width: 100%;
+ 	height: 100%;
+ }
+ label{font-size: 0.35rem ;}
+.ad-content .btn{
+	position: absolute;
+	bottom: -0.8rem;
+	left: 25%;
+	border-radius: 8px;
+	width:50%;
+	height: 0.75rem;
+	background-color:#84ac3c ;
+	border: none;
+	color: #fff;
+	font-size: 0.30rem;
+}
+.mui-icon-closeempty{display: none;}

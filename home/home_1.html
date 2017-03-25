@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>主页</title>
+		<link href="../css/iconfont(1).css" rel="stylesheet" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/media.css" rel="stylesheet"/> 				
+		<link rel="stylesheet" type="text/css" href="../css/food-home.css"/>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/longin.css"/>
+		<style>
+		</style>
+	</head>
+	<body>
+		<div  class="mui-bar mui-bar-transparent head" style="background-color:rgba(247,247,247,0)">
+			<div class="mui-fd-seach">
+			    <span class="mui-icon mui-icon-search"></span>
+			   	  <input type="text" placeholder="黄闷鸡米饭" class="search"/>				   	   
+			</div>
+		</div>		
+		<div class="mui-content mui-content mui-scroll-wrapper" style="height:100%;" id="pullrefresh">
+			<div class="mui-scroll">							
+			 <div class="mui-slider slier_box">
+				<div class="mui-slider-group mui-slider-loop">
+					<div class="mui-slider-item mui-slider-item-duplicate before">
+						<a href="#"><img src="../img/hm-pg1.jpg"  class="before"/></a>
+					</div>					
+					<div class="mui-slider-item mui-active">
+						<a href="#"><img src="../img/hm-pg1.jpg" class="hompic"/></a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"><img src="../img/hm-pg1.jpg" class="hompic"/></a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"><img src="../img/hm-pg1.jpg" class="hompic"/></a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"><img src="../img/hm-pg1.jpg" class="hompic"/></a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"><img src="../img/hm-pg1.jpg" class="hompic"/></a>
+					</div>					
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#"><img src="../img/hm-pg1.jpg" class="after"/></a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator  he-oval"></div>
+					<div class="mui-indicator  he-oval"></div>
+					<div class="mui-indicator  he-oval"></div>
+					<div class="mui-indicator  he-oval"></div>
+					<div class="mui-indicator  he-oval"></div>
+				</div>
+			</div>		
+			<div class=" content">
+				<ul class="mui-row " >
+					<li class=" mui-col-xs-3 mui-pt">
+						 <a href="" ><span class="iconfont icon-guo"></span></a>
+						<p>热菜</p>
+					</li>					
+					<li class="mui-col-xs-3 mui-pt">
+						<a href=""><span class="iconfont icon-meishi"></span></a>
+						<p>面食</p>
+					</li>					
+					<li class="mui-col-xs-3 mui-pt">
+						<a ><span class="iconfont icon-tianpin"></span></a>
+						<p>饮料</p>
+					</li>										
+					<li class="mui-col-xs-3 mui-pt">
+						<a href=""><span class="iconfont icon-chudianbaotang"></span></a>
+						<p>汤品</p>
+					</li>				
+				</ul>
+			
+			</div>
+			<div class="mui-line">心随意动</div>
+			<!--内容-->
+			<div class="content-nei" id="pullrefresh">
+				<ul class="conmain" ></ul>
+			</div>
+			</div>
+	    </div>
+	    <script src="../js/time.js"></script>
+        <script src="../js/ajaxmain.js"></script>
+	    <script type="text/javascript" charset="utf-8">
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh,
+					}
+				}
+			});			
+			var con='';
+			var count = 0;
+			var gallery = mui('.mui-slider');
+			var hompic=document.getElementsByClassName('hompic');
+			var ul='http://192.168.1.107/MS_progect/Uploads/ms_food_img/';
+			gallery.slider({
+				interval: 5000
+			});
+			//第一次渲染
+			ajax();
+			//上拉刷新
+			function pullupRefresh(){
+				setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2));
+					ajax();
+				}, 1000);
+			}
+			//类别
+			mui('.mui-pt').on('tap','a',function(){
+				var index=$(this).parent().index()+1;
+				mui.openWindow({
+	    			url: 'leibie.html', 
+	    			id:'leibie',
+	    			extras:{
+	    				ms_food_type:index,
+	    				ms_title:$(this).parent().children('p').text ()
+	    			}
+  				});
+			})
+			//all
+			mui('.conmain').on('tap','.pur',function(){
+				var index=$(this).parent().index();
+				ajaxMain('/Home/Home/cp_recommend',{},function(data){
+					mui.openWindow({
+		    			url: '../recipe/recipe_2.html', 
+		    			id:'recipe2',
+		    			extras:{
+		    				ms_food_id:data.d[data.d.length-len-1].ms_food_id
+		    			}
+	  				});
+	  			})
+			})
+			$('.mui-slider-item a').on('tap','.hompic',function(){
+				var index=$(this).parent().index();
+				ajaxMain('/Home/Home/cp_recommend',{},function(data){
+					mui.openWindow({
+		    			url: '../recipe/recipe_2.html', 
+		    			id:'recipe2',
+		    			extras:{
+		    				ms_food_id:data.d[data.d.length-index-1].ms_food_id
+		    			}
+	  				});
+	  			})
+			})
+			$('.search').focus(function(){
+				mui.openWindow({
+	    			url: '../recommend/recommend-search(1).html', 
+	    			id:'recommendsearch'
+	    		});
+			})
+			var len=document.getElementsByClassName('list').length;
+			ajaxMain('/Home/Home/cp_recommend',{},function(data){
+				var leng=data.d.length-len-1;
+				for(j=leng;j>leng-5&&j>=0;j--){
+					hompic[data.d.length-j-1].src=ul+data.d[j].ms_food_img;					
+				}
+				$('.before').attr('src',ul+data.d[leng-4].ms_food_img);
+				$('.after').attr('src',ul+data.d[leng].ms_food_img)
+			})
+			function ajax(){				
+				ajaxMain('/Home/Home/cp_recommend',{},function(data){
+					var len=document.getElementsByClassName('list').length;
+					var leng=data.d.length-len-1;
+					for(j=leng;j>leng-5&&j>=0;j--){
+						var time=data.d[j].ms_food_time;
+						if(time!=null){
+							var date= new Date(Date.parse(time.replace(/-/g, "/")));
+							var a = date.getTime();
+							var getime=getDateDiff(a);
+						}else{
+							var getime=null;
+						}
+						data.d[j].ms_food_like=data.d[j].ms_food_like==null?0:data.d[j].ms_food_like;
+						data.d[j].ms_food_collection=data.d[j].ms_food_collection==null?0:data.d[j].ms_food_collection;
+						data.d[j].ms_food_comment=data.d[j].ms_food_comment==null?0:data.d[j].ms_food_comment;
+						con+='<li class="list"><a href="javascript:;" class="pur"><img class="mui-pull-left image" src="'+ul+data.d[j].ms_food_img+'" />'
+		            	+'<div class="nei"><img src="../img/hd (3).png"/><span >'+data.d[j].ms_food_name+'</span>'
+		               	+'<span class="time">'+getime+'</span></div>'
+		            	+'<div class="nei"><p class="">'+data.d[j].ms_food_introduce+'</p>'
+		                +'<div class="ziti"><a href="#" class="iconfont icon-aixin"></a><span>'+data.d[j].ms_food_like+'</span>'
+						+'<a href="#" class="iconfont icon-star-outline"></a><span>'+data.d[j].ms_food_collection+'</span>'
+		                +'<a href="#" class="iconfont icon-liuyan"></a><span>'+data.d[j].ms_food_comment+'</span></div>'
+		               	+' </div></a></li>'			           				        			   
+					}
+					$('.conmain').html(con);
+				})
+			}
+
+		</script>
+	</body>
+</html>
