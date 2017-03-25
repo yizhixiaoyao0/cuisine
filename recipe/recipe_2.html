@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>菜谱详情</title>
+    <script src="../js/mui.min.js"></script>
+	<script src="../js/jquery-3.1.1.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link href="../css/media.css" rel="stylesheet"/>
+    <link href="../css/share.css" rel="stylesheet"/>
+    <link href="../css/iconfont.css" rel="stylesheet"/>
+    <script src="../js/share.js" ></script>
+    <style type="text/css">
+    	/*head*/
+    	*{
+    		font-family:simsun ;
+    		color: #777;
+    	}
+    	ul li{
+    		list-style-type: none;
+    	}
+    	a,img{display: block;}
+    	#header>.back{
+    		color:#fff ;
+    		font-size:0.55rem;
+    	}
+    	#header>.title{
+    		color: #fff;
+    		padding-top: 0.1rem;
+    		font-size:0.38rem;
+    	}
+    	/*中间*/
+    	.mui-content>img{
+    		width: 100%;
+    	}
+    	.mui-content{
+    		width: 100%;
+    	}    	
+    	.con_main{
+    		position:relative;
+    		top:-2.3rem;
+    		width:100%;   
+    		padding:0 15px; 		
+    	}
+    	.caipu_logo{
+    		position: absolute;
+    		left:30%;
+    		width:43%;
+    		height: 38%;
+    	}
+    	.caipu_logo>img{
+    		width:100%;
+    		height:100%;
+    		border-radius:50%;
+    	}
+    	.caipu_detail{
+    		width:100%;
+    		min-height:8.7rem;
+    		background-color: #fff;
+    		position:relative;
+    		top:2.05rem; 
+    		padding: 0 0.3rem;   	    		
+    		border-radius:8px;
+    		box-shadow: 0 0 20px #777;
+    	}
+    	.detail{
+    		position: relative;
+    	}
+    	.detail>.book{
+    		position: absolute;
+    		top:-4px;
+    		color: #cb000a;
+    	}
+    	.detail>.recipe_title{
+    		display: block;
+    		text-align: center;
+			padding-top: 0.1rem;
+			color: #777;
+			font-size: 0.32rem;
+    	}
+    	.select .sele{
+    		background:none;
+    		border: none;
+    		width: 100%;
+    		position: relative;
+    		margin-top: 0.8rem;
+    	}
+    	.select .sele>.list{
+    			display: block !important;
+    		border: none;
+    		padding-bottom: 0;
+    	}
+		.sele>.list>div{
+			font-size: 0.28rem;
+			color: #777;
+		}
+		.sele>.list>.hot{
+			color: #d42b33;
+			position: absolute;
+			left: 0;
+		}
+		.user{
+			width: 80%;
+			margin-left: 0.5rem;
+			margin-top: 0.2rem;					
+		}
+		.user_top{
+			padding:0.3rem;
+		}
+		.user_pic{
+			height:1.0rem;
+			width:1.0rem;
+			float: left;
+			margin-bottom: 0.1rem;
+			border-radius:50%;
+		}
+		.user_pic #toself,.user_pic #toself img{
+			border-radius:50%;
+			width: 100%;
+			height: 100%;
+			display: block;
+		}
+		.user_top>a>.share{
+			float: right;
+			font-size:0.5rem;
+			padding: 8% 0;
+			color: #777;
+		}
+		.detail_pic{
+			clear:both;
+			height: 1.6rem;
+		}
+		.pic{
+			height: 100%;
+			padding: 0 0.1rem;
+		}
+		.detail_pic>.pic>img{
+			width: 100%;
+			height: 100%;
+		}
+		.describe{
+			position:relative;
+			padding-top:5px;
+			width:100%;		
+			clear: both;	
+		}
+		.describe div>p{						
+			word-break:break-all;			
+			text-align: left;
+			text-indent: 1.5em;	
+			min-height: 2.5rem;	
+			margin-top: 0.2rem;
+		}
+
+		.describe .tab{
+			width: 100%;
+			height:30px;
+			-webkit-padding-start:0.2rem;
+	
+		}
+		.describe .heart{
+			width: 25%;
+			float:left;
+			text-indent: 0;
+			display: block;		
+		}
+		.heart>a,.heart span{
+			display: block;
+			float: left;
+			color: #777;
+		}
+		.heart span{
+			margin-left: 0.1rem;
+		}
+		.select{
+			height: 8.5rem;
+		}
+		.heart>a>span{
+			font-size:18px;
+			color: #ccc;
+			margin-right: 5px;
+		}
+		.small>a>span{
+			font-size:22px;
+		}
+		.heart span{
+			color: #ccc;
+			font-size: 0.28rem;
+		}
+		/*尾部*/
+		.footer,.footer a{height: 0.95rem !important;display: block;}
+		.footer a span{color: #777;margin-left: -20%;font-size: 0.4rem !important;}
+		/*.footer a span span{font-size: 0.35rem;font-family: simsun;margin-left:0.3rem;}*/	 
+		/**/
+		.smal{
+			font-size: 0.42rem;
+		}
+		.lg{
+			font-size:0.35rem;
+		}
+		.nonum{
+			padding:0 0.3rem ;
+			display: block;
+		}
+		/*.mui-active{color:#fff !important};*/
+		.heart .result{color:#cc000b !important}
+    </style>
+</head>
+<body>
+	<header id="header" class="mui-bar mui-bar-transparent" style="background-color:rgba(247,247,247,0)">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left back"></a>
+		<h1 class="mui-title title">菜谱详情</h1>
+	</header>
+	<div class="mui-content">
+		<img src="../img/head_01.jpg"/>
+		<div class="con_main">
+			<div class="caipu_logo">
+				<img src="" class="caipu_2"/>
+			</div>
+			<div class="caipu_detail">
+				<div class="detail">
+					<span class="mui-icon iconfont icon-mianxingtubiaoshuqian book"></span>
+					<span class="recipe_title">金银蛋饺</span>
+					<div class="select mui-scroll-wrapper">
+						<div class="mui-scroll">
+						<ul class="mui-table-view mui-grid-view mui-grid-9 sele">
+							<li class="mui-table-view-cell mui-row list">
+								<div class="mui-icon iconfont icon-jiare hot"></div>
+								<div class="mui-col-sm-4 mui-col-xs-4">鸡蛋</div>
+								<div class="mui-col-sm-4 mui-col-xs-4">…………</div>
+								<div class="mui-col-sm-4 mui-col-xs-4">500g</div>								
+							</li>
+							<li class="mui-table-view-cell mui-row list">					
+								<div class="mui-col-sm-4 mui-col-xs-4">鸡蛋</div>
+								<div class="mui-col-sm-4 mui-col-xs-4">…………</div>
+								<div class="mui-col-sm-4 mui-col-xs-4">500g</div>								
+							</li>
+							<li class="mui-table-view-cell mui-row list">
+								<div class="mui-col-sm-4 mui-col-xs-4">鸡蛋</div>
+								<div class="mui-col-sm-4 mui-col-xs-4">…………</div>
+								<div class="mui-col-sm-4 mui-col-xs-4">500g</div>								
+							</li>
+						</ul>
+						<div class="user ">
+							<div class="user_top">
+								<div class="user_pic" id="nav">
+									<a href="#" id="toself"><img src="" /></a>									
+								</div>
+								<a  href="#popover" id="openPopover"><div class="share mui-icon iconfont icon-zhuanfa"></div></a>
+							</div>							
+							<div class="detail_pic mui-row">
+								<div class="mui-col-xs-4 mui-col-sm-4 pic">
+									<img src="../img/hm-pic.gif"/>
+								</div>
+								<div class="mui-col-xs-4 mui-col-sm-4 pic">
+									<img src="../img/hm-pic.gif"/>
+								</div>
+								<div class="mui-col-xs-4 mui-col-sm-4 pic">
+									<img src="../img/hm-pic.gif"/>
+								</div>
+							</div>		
+							<div class="describe">
+								<div class="">
+									<p>										
+									</p>
+									<ul class="tab">
+										<li class="mui-tab-item heart good"><a href="#" class=" mui-icon iconfont icon-dianzan lg"></a><span></span></li>
+										<li class="mui-tab-item heart nogood"><a href="#" class=" mui-icon iconfont icon-chaping lg"></a><span></span></li>
+										<li class="mui-tab-item heart small like"><a href="#" class=" mui-icon iconfont icon-iconfontyiguanzhu smal"></a><span></span></li>
+										<li class="mui-tab-item heart small nonum"><a href="#" class=" mui-icon iconfont icon-star-outline smal"></a></li>
+									</ul>
+								</div>
+							</div>												
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div id="popover" class="mui-popover menu" >
+			<p>分享</p>
+			<div>
+			  <ul class="">
+			    <li class="">
+			    	<a href="#" onclick="shareMessage(0)">
+			    		<img src="../img/qq.png" />
+			    		<span>QQ好友</span>
+			    	</a>
+			    </li>
+			    <li class=""><a href="#" onclick="shareMessage(1)">
+			    	<img src="../img/weibo.png" />
+			    		<span>微博</span>
+			    </a></li>
+			    <li class=""><a href="#" onclick="shareMessage(2)" >
+			    	<img src="../img/friend.png" />
+			    		<span>朋友圈</span>
+			    </a></li>
+			    <li class=""><a href="#" onclick="shareMessage(2)">
+			    	<img src="../img/weixin.png"/>
+			    		<span>微信好友</span>
+			    </a></li>							    
+			  </ul>
+			</div>
+			<div class="div2">
+				<ul class="">
+				    <li class="">
+				    	<a href="#" onclick="shareMessage(0)">
+				    		<img src="../img/kongjian1.png" />
+				    		<span>QQ空间</span>
+				    	</a>
+				    </li>
+				    <li class=""><a href="#">
+				    	<img src="../img/link.png" />
+				    		<span>复制链接</span>
+				    </a></li>
+			   </ul>
+			</div>
+		  <button class="btn">取消</button>  
+	</div>
+	<nav class="mui-bar mui-bar-tab footer">
+		    <a class="mui-tab-item mui-active">
+		        <span class="mui-icon iconfont icon-xiaoxi "><span style="margin-left: 0.1rem;" class="review">0评论</span></span>		        
+		    </a>
+	</nav>
+	<script src="../js/ajaxmain.js"></script>
+	<script src="../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript">
+	mui.init({});
+	mui.plusReady(function(){
+		id=plus.webview.currentWebview().ms_food_id;
+		firstRequest(id);
+		review(id)
+	})
+	var manul='http://192.168.1.107/MS_progect/Uploads/ms_user_img/';
+	var foodul='http://192.168.1.107/MS_progect/Uploads/ms_food_img/';
+	function firstRequest(foodid){
+		ajaxMain('/Home/Home/Menu_details',{ms_food_id:foodid},
+		function(data){
+			$('.recipe_title').html(data.aa[0].ms_food_name);
+			$('.caipu_logo img').attr('src',foodul+data.aa[0].ms_food_img);
+			$('#toself img').attr('src',manul+data.aaa[0].ms_user_img)
+			$('.describe div p').html(data.aaa[0].ms_food_value+data.aa[0].ms_food_introduce)
+			data.aa[0].ms_food_good=data.aa[0].ms_food_good==null?0:data.aa[0].ms_food_good;
+			$('.good span').html(data.aa[0].ms_food_good);
+			data.aa[0].ms_food_not_good=data.aa[0].ms_food_not_good==null?0:data.aa[0].ms_food_not_good;
+			$('.nogood span').html(data.aa[0].ms_food_not_good);
+			data.aa[0].ms_food_like=data.aa[0].ms_food_like==null?0:data.aa[0].ms_food_like;
+			$('.like span').html(data.aa[0].ms_food_like);
+			data.aa[0].ms_food_comment=data.aa[0].ms_food_comment==null?0:data.aa[0].ms_food_comment;
+			$('.review').html(data.aa[0].ms_food_comment+'评论')
+		})
+		mui('#nav').on('tap','#toself',function(){
+			ajaxMain('/Home/Home/Menu_details',{ms_food_id:foodid},
+			function(data){
+				mui.openWindow({
+					url:'recipe_3.html',  
+		            id:'toself',
+		            extras:{
+		            	ms_follow_id:data.aaa[0].ms_user_id
+		            }
+				})
+			})
+		})
+	}
+	function review(foodid){
+		mui(".footer").on("tap",".mui-tab-item",function(){
+				mui.openWindow({
+					url:'../recommend/recommendpinglun.html',
+					id:"recommendpinglun",
+					styles:{
+	        			top:'210px',//mui标题栏默认高度为45px；
+	        			bottom:'0px'//默认为0px，可不定义；
+      				},
+      				extras:{
+      					ms_food_di:foodid
+      				}
+				})
+		})
+	}
+	$(".btn").on("click",function(){
+		$("#popover,.mui-backdrop").toggle();
+	});
+	mui('.mui-scroll-wrapper').scroll({
+			scrollY: true, //是否竖向滚动
+			deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+	});
+	</script>
+</body>
+</html>

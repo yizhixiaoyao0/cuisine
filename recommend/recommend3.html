@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>美食推荐</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/media.css" rel="stylesheet"/>
+		<script src="../js/mui.min.js"></script>
+		<link rel="stylesheet"  href="../css/longin.css"/>
+		<style>
+			#tuijian{margin-top:40px;}
+			.back{color:#fff;}
+			.img img{width: 100%;height:5.5rem;box-shadow: 0 0 10px #ccc;}
+			/*.mui-active{background: #cc000b !important;}*/
+			.mui-slider-indicator .mui-indicator{background: #000000 ;width: 8px;height: 8px;margin: 4px;}
+			.content{margin-top: 15px;background-color: #ffffff;height:5.8rem;position: relative;}
+			.content .roll{border-bottom: 1px solid #ccc;padding-bottom: 15px;height:1.8rem !important;border-bottom: 1px solid #ccc;padding-bottom:1.8rem !important;}
+			/*.roll div{height: 100%;}*/
+			.roll div img{margin: 0 5px 0 5px;height: 1.5rem;width:1.8rem ;box-shadow: 0 0 10px #ccc;}
+			.content p{padding: 10px 0 0 5%;font-size:0.28rem;}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background-color: #cc000b;">
+			<h1 class="mui-title"style="color:#fff;">美食推荐</h1>
+			<a class="mui-icon mui-icon-search mui-pull-right back"></a>
+		</header>
+		<div id="tuijian">
+			<div id="slider" class="mui-slider img" >
+			  <div class="mui-slider-group mui-slider-loop">
+			    <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+			    <div class="mui-slider-item mui-slider-item-duplicate before">
+			      <a href="#" class="letter">
+			        <img src="" id="carousel-pic1">
+			      </a>
+			    </div>
+			    <!-- 第一张 -->
+			    <div class="mui-slider-item">
+			      <a href="#" class="letter">
+			        <img src="" class="leimg">
+			      </a>
+			    </div>
+			    <!-- 第二张 -->
+			    <div class="mui-slider-item">
+			      <a href="#" class="letter">
+			        <img src="" class="leimg">
+			      </a>
+			    </div>
+			    <!-- 第三张 -->
+			    <div class="mui-slider-item">
+			      <a href="#" class="letter">
+			        <img src="" class="leimg">
+			      </a>
+			    </div>
+			    <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+			    <div class="mui-slider-item mui-slider-item-duplicate next">
+			      <a href="#" class="letter">
+			        <img src="" id="carousel-pic3">
+			      </a>
+			    </div>
+			  </div>
+			  <div class="mui-slider-indicator dian">
+			    <div class="mui-indicator mui-active"></div>
+			    <div class="mui-indicator"></div>
+			    <div class="mui-indicator"></div>
+			  </div>
+			</div>
+			<div class="content mui-scroll-wrapper">
+				<div class="mui-scroll">
+				<p>今日推荐</p>
+				<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted roll">
+    				<div class="mui-scroll letter1-html letter1">
+				    </div>
+				</div>
+				<p>面食</p>
+				<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted roll" >					
+					<div class="mui-scroll letter1-html letter2">
+					</div>
+				</div>
+				<p>饮料</p>
+				<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted roll" >					
+					<div class="mui-scroll letter1-html letter3">
+					</div>
+				</div>
+				<p>汤品</p>
+				<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted roll" >					
+					<div class="mui-scroll letter1-html letter4">
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<script src="../js/ajaxmain.js"></script>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script>	
+		mui.init();
+		mui(".mui-slider").slider({interval:1000});
+		mui('.roll').scroll({
+			scrollX: true,			
+			deceleration: 0.0005,
+			bounce: true,
+		});
+		mui('.content').scroll({
+			scrollY: true,			
+			deceleration: 0.0005,
+			bounce: true,
+		});
+         mui('.mui-bar').on('tap','.back',function(){
+        	mui.openWindow({
+        		url:'recommend-search(1).html',  
+            	id:'recommendsearch',  
+        	})
+        })
+		ajaxMain('/Home/Home/ms_recommend',{"ms_delicious_type1":1,"ms_delicious_type2":2,"ms_delicious_type3":3,"ms_delicious_type4":4},
+		function(data){ 
+    	  	var len=data.d.length;       	    	   
+    	    var src="http://192.168.1.107/MS_progect/Uploads/ms_delicious_img/";     	    	         
+    		var html=document.getElementsByClassName('letter1-html');
+    		var carousel=document.getElementsByClassName('leimg')
+    		var letter1=document.getElementsByClassName("letter1-pic"),
+    		    letter2=document.getElementsByClassName("letter2-pic"),
+    		    letter3=document.getElementsByClassName("letter3-pic"),
+    		    letter4=document.getElementsByClassName("letter4-pic");    	    		      	    		
+    	    //轮播图       	    	        	    	       	    	               	    	         
+    	    for(var i=data.d.length-1;i>data.d.length-4;i--){
+    	       carousel.item(data.d.length-i-1).src=src+data.d[i].ms_delicious_img;
+    	     } 
+    	     //节点一
+    	    document.getElementById("carousel-pic1").src=src+data.d[data.d.length-1].ms_delicious_img;
+    	    //节点二
+    	    document.getElementById("carousel-pic3").src=src+data.d[data.d.length-3].ms_delicious_img;      	    	    
+    	    //在div加"letter1-html"class类名      	    	   
+    	   //美食推荐   
+    	   var sura=data.a.length>6?7:data.a.length;
+    	    for(var i=data.a.length-1;i>=data.a.length-sura;i--){
+    	      html.item(0).innerHTML+='<a href="#" class="letter"><img src="" class="letter1-pic" /></a>'; 
+    	      letter1.item(data.a.length-i-1).src=src+data.a[i].ms_delicious_img;       	    	     
+    	    }      	    	           	    	  	    	    	 
+    	  //面食      	
+    	  	var surb=data.b.length>6?7:data.b.length;
+    	   	for(var i=data.b.length-1;i>=data.b.length-surb;i--){
+    	      	html.item(1).innerHTML+='<a href="#" class="letter"><img src="" class="letter2-pic" /></a>'; 
+    	     	letter2.item(data.b.length-i-1).src=src+data.b[i].ms_delicious_img;
+    	 	}       
+    	//饮料    
+    		var surc=data.c.length>6?7:data.c.length;
+    		for(var i=data.c.length-1;i>=data.c.length-surc;i--){
+    	      	html.item(2).innerHTML+='<a href="#" class="letter"><img src="" class="letter3-pic" /></a>'; 
+    	     	letter3.item(data.c.length-i-1).src=src+data.c[i].ms_delicious_img;
+    	 	}
+    	//汤品
+    		var sure=data.e.length>6?7:data.e.length;
+    		for(var i=data.e.length-1;i>=data.e.length-sure;i--){
+    	  		html.item(3).innerHTML+='<a href="#" class="letter"><img src="" class="letter4-pic" /></a>';
+    	  		letter4.item(data.e.length-i-1).src=src+data.e[i].ms_delicious_img;
+    		}           
+     	})
+  		$('.mui-slider-item').on('click','.letter',function(){
+  			var index=$(this).parent().index();
+  			ajaxMain('/Home/Home/ms_recommend',{},
+			function(data){
+				mui.openWindow({
+		    		url:'recommend1.html',  
+		        	id:'recommend1',
+		        	extras:{
+		        		delicious_food_id:data.d[data.d.length-index-1].delicious_food_id
+		        	}		        	
+				})
+			})
+  		})
+  		$('.letter1').on('click','.letter',function(){
+  			var index=$(this).index();
+  			ajaxMain('/Home/Home/ms_recommend',{"ms_delicious_type1":1},
+			function(data){
+				mui.openWindow({
+		    		url:'recommend1.html',  
+		        	id:'recommend1',
+		        	extras:{
+		        		delicious_food_id:data.a[data.a.length-index-1].delicious_food_id
+		        	}		        	
+				})
+			})
+		})
+  		$('.letter2').on('click','.letter',function(){
+  			var index=$(this).index();
+  			ajaxMain('/Home/Home/ms_recommend',{"ms_delicious_type2":2},
+			function(data){
+				mui.openWindow({
+		    		url:'recommend1.html',  
+		        	id:'recommend1',
+		        	extras:{
+		        		delicious_food_id:data.b[data.b.length-index-1].delicious_food_id
+		        	}		        	
+				})
+			})
+		})
+		$('.letter3').on('click','.letter',function(){
+  			var index=$(this).index();
+  			ajaxMain('/Home/Home/ms_recommend',{"ms_delicious_type3":3},
+			function(data){
+				mui.openWindow({
+		    		url:'recommend1.html',  
+		        	id:'recommend1',
+		        	extras:{
+		        		delicious_food_id:data.c[data.c.length-index-1].delicious_food_id
+		        	}		        	
+				})
+			})
+		})
+       $('.letter4').on('click','.letter',function(){
+  			var index=$(this).index();
+  			ajaxMain('/Home/Home/ms_recommend',{"ms_delicious_type4":4},
+			function(data){
+				mui.openWindow({
+		    		url:'recommend1.html',  
+		        	id:'recommend1',
+		        	extras:{
+		        		delicious_food_id:data.e[data.e.length-index-1].delicious_food_id
+		        	}		        	
+				})
+			})
+		})
+       	  
+       	
+
+     </script>
+	</body>
+
+</html>

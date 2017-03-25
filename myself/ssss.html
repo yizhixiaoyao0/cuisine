@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+	</head>
+<script src="../js/jquery-3.1.1.js"></script>
+	<body>
+<div class="mui-bar mui-bar-nav" style="background-color: #cc000b;">
+			<a class="mui-icon mui-icon-left-nav mui-action-back mui-pull-left back"></a>
+			<h1 class="mui-title">上传美食</h1>			
+		</div>		
+		<div class="mui-content">
+			<div class="upload">
+				<a href="#picture" href="#" class="pict">
+					<img src="../img/tianjia.png" id="show"/>
+					<p style="font-size: 0.28rem;">上传封面</p>
+				</a>								
+			</div>
+			<div class="main_text">
+				<form method="post" class="mui-table-view"	enctype="multipart/form-data" id="myForm"  target='id_iframe'>
+					<input type="file" accept="image/*" style="display: none;" class="pick" name="photo"/>
+					<div class="mui-row row">
+						<input type="text" placeholder="请输入菜食名称" name="ms_delicious_name" class="cname"/>
+					</div>
+					<div class="mui-row mui-table-view-cell step row">
+						<a class="title">——美食介绍——</a>
+						<textarea class="mui-pull-left" name="ms_delicious_introduce" class="intro"></textarea>
+					</div>
+
+					<div class="mui-table-view-cell step row">
+						<a class="title">——营养价值——</a>						
+						<textarea class="mui-pull-left" class="nutrition" name="ms_delicious_nutrition"></textarea>
+					</div>
+					<div class="mui-row mui-input-row row">
+						<label class="key">类别</label>
+						<select class="choose" name="ms_delicious_type" id='list'>
+							<option value="">请选择类别</option>
+							<option value="1" name="ms_delicious_type">热菜</option>
+							<option value="2" name="ms_delicious_type">面食</option>
+							<option value="3" name="ms_delicious_type">饮料</option>
+							<option value="4" name="ms_delicious_type">汤品</option>
+						</select>
+					</div>
+					<input class="mui-btn mui-btn-danger public" type="submit" value="上传美食"/>
+				</form>
+				<iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe>
+			</div>
+		</div>
+		<script >	
+		var id=1;
+		$('form')[0].action='http://192.168.1.107/MS_progect/index.php/Home/home/delicious_food?ms_user_id='+id;
+		$('.pict').on('click',function(){
+			$('.pick').trigger('click');
+		})
+		$('input[type="file"]').change(function(){
+			var file=this.files[0];
+			var reader=new FileReader();
+			reader.onload = function(evt){
+			$('#show').show().attr('src',evt.target.result);
+			}
+			reader.readAsDataURL(file);
+		});		
+		</script>
+	</body>
+
+</html>

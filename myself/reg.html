@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>	
+		<link href="../css/media.css" rel="stylesheet" />
+		<script src="../js/mui.min.js"></script>		
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style>
+		    span,a,li{display: block;}
+		    .head{background-color: #cc000b;}
+		    .head a{color: #ffffff;}
+		    .head h1{color: #ffffff;}
+		    .mui-content>.mui-table-view:first-child {margin-top: 0.16rem;}
+		    .content li span{width: 17%;height: 0.4rem;margin-right: 5%;}
+		    .content li{color: #777777;height: 0.7rem;padding-top: 0.17rem;font-size: 0.25rem;}
+		   	.btn{width: 100%;margin-top: 1.8rem;}
+		   	.btn button{width: 90%;height: 0.8rem;background-color: #cc000b;margin-left: 5%;color: #ffffff;font-size: 0.24rem;}
+			.mui-switch .mui-switch-handle{height: 0.45rem;}
+			.mui-switch{height: 0.5rem;font-size: 8px;position: relative;}
+			
+			
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav head">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">设置</h1>
+		</header>
+		<div class="mui-content content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a href="#">
+						推送通知
+						<span class="mui-pull-right">
+							<div class="mui-switch switch mui-active mui-switch-mini">
+  								<div class="mui-switch-handle "></div>
+							</div>
+						</span>
+                    </a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="#">
+						清理缓存
+						<span class="mui-pull-right">
+							2.46M
+						</span>
+                    </a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="#">
+						存储空间
+						<span class="mui-pull-right">
+							
+						</span>
+                    </a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a>
+						关于我们
+						<span class="mui-pull-right">
+							7.3版本
+						</span>
+                    </a>
+				</li>
+			</ul>
+		</div>
+		<div class="btn">
+			<button>退出登录</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		mui.init();
+		mui('.btn').on('tap','button',function(){
+			mui.openWindow({
+				url:'login.html',
+				id:'login'
+			})
+		})
+	</script>
+</html>

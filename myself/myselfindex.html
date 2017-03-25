@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>个人中心</title>
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/personalCenter.css" />
+		<link rel="stylesheet" href="../css/media.css" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../js/mui.min.js"></script>
+		<link rel="stylesheet"  href="../css/longin.css"/>
+	</head>
+	<body>
+		<div class="food_cate">
+			<!--头部-->
+			<div class="mui-bar cate_nav">
+				<a href="" class="mui-icon mui-icon-bars mui-pull-right enter"></a>
+				<a href="" class="mui-icon iconfont icon-lingsheng news"></a>
+			</div>
+			<!--头像+呢称+签名-->
+			<div class="ct-header">
+				<!--头像-->
+				<a href="#" class="alter">
+					<div class="ct-portrait">
+						<img src="" />
+					</div>
+					<!--呢称-->
+					<p class="ct-amd">
+						<!--Anna-->
+					</p>
+					<!--签名-->
+					<p class="ct-amd ct-sign ">
+						<!--Happy every day!-->
+					</p>
+				</a>				
+			</div>
+			<!--上传 分享 关注 收藏-->
+			<div class="mui-slider  ct-personal">
+				<div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="width: 80%;margin: auto;margin-bottom:0.15rem;">
+					<a class="mui-control-item" href="#item1"><span class="num upnum">25</span><span class="text">上传</span></a>
+					<a class="mui-control-item" href="#item2mobile"><span class="num sharenum">10</span><span class="text">分享</span></a>
+					<a class="mui-control-item" href="#item3mobile"><span class="num connum">55</span><span class="text">关注</span></a>
+					<a class="mui-control-item" href="#item4mobile"><span class="num collnum">30</span><span class="text">收藏</span></a>
+				</div>
+
+				 <div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-3 ct-boder"style="width: 20%;margin-left: 10%;"></div>
+				<!--上传  -->
+				<div class="mui-slider-group">
+					<div id="item1" class="mui-slider-item mui-control-content mui-active">
+						<ul class="mui-table-view">
+							<div class="ct-cate">
+								<!-- 上传菜谱-->
+								<div class="ct-uploading">
+									上传菜谱
+								</div>
+								<!-- 菜谱图-->
+								<div class="mui-content mui-menu-pic mui-scroll-wrapper">									
+									<div class="mui-row mui-scroll uppic">
+										<!--<div class="mui-col-xs-4 ct-menu-pic"><img src="../img/meishi (1).png" /></div>
+										-->
+										<!--   添加-->
+										<div class="mui-col-xs-4 ct-add-pic">
+											<a href="#"><img src="../img/tianjia.png" /></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</ul>
+					</div>
+					<!--分享-->
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-table-view">
+							<div class="ct-cate">
+								<!-- 分享美食-->
+								<div class="ct-uploading">
+									分享美食
+								</div>
+								<!-- 菜谱图-->
+								<div class="mui-menu-pic mui-scroll-wrapper">
+									<div class="mui-row mui-scroll shares">
+										<!--<div class="mui-col-xs-4 ct-menu-pic"><img src="../img/meishi (1).png" /></div>-->										
+										<!--   添加-->
+										<div class="mui-col-xs-4 ct-add-pic">
+											<a href="#"><img src="../img/tianjia.png" /></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!--关注-->
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-table-view mui-scroll-wrapper attention" id="pullrefresh">
+							<div class="catet-attention mui-scroll">
+								<!--<div class="cate-pt">
+									<div class="cate-pic">
+										<img src="../img/hd (1).png" />
+									</div>
+
+									<div class="cate-text">
+										<h3>Lina</h3>
+										<p>I want to eat all the world!</p>
+									</div>
+
+									<div class="cate-mutual">
+										<a href="#" class="mui-icon iconfont icon-iconfontyiguanzhu"></a>
+									</div>
+								</div>-->
+							</div>
+						</div>
+					</div>
+					<!--  收藏-->
+					<div id="item4mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-table-view">
+							<div class="mui-slider collect">
+								<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted heji">
+									<a class="mui-control-item mui-active" href="#recommend">收藏菜谱</a>
+									<a class="mui-control-item " href="#like">收藏美食</a>
+								</div>								
+                            	 <div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-2"><div style="background-color: #cb000a;width: 0.45rem;height: 100%;"></div></div>							
+								<div class="mui-slider-group ">
+									<div id="recommend" class="mui-slider-item mui-control-content ">
+										<div class="mui-table-view ">											
+											<div class="mui-content mui-menu-pic mui-scroll-wrapper">												
+												<div class="mui-row mui-scroll collectfood">
+													<!--<div class="mui-col-xs-4 ct-menu-pic"><img src="../img/meishi (1).png" /></div>-->
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div id="like" class="mui-slider-item mui-control-content">
+										<div class="mui-table-view">
+											<div class="mui-content mui-menu-pic mui-scroll-wrapper">												
+												<div class="mui-row mui-scroll collectdeli">													
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<script src="../js/ajaxmain.js"></script>
+	<script src="../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript">
+		mui.init()
+		mui('.mui-scroll-wrapper').scroll({
+			scrollY: true, //是否竖向滚动
+			deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+		});
+		mui('.ct-header').on('tap','.alter',function(){
+			mui.openWindow({
+        		url:'modification.html',  
+            	id:'modificaton.index',  
+        	})
+		})
+		var manul='http://192.168.1.107/MS_progect/Uploads/ms_user_img/';
+		var foodul='http://192.168.1.107/MS_progect/Uploads/ms_food_img/';
+		var deliul='http://192.168.1.107/MS_progect/Uploads/ms_delicious_img/';
+		mui('.shares .ct-add-pic').on('tap','a',function(){
+			mui.openWindow({
+        		url:'gdfoodup.html',  
+            	id:'gdfoodup.html',  
+        	})
+		})
+		mui('.uppic .ct-add-pic').on('tap','a',function(){
+			mui.openWindow({
+        		url:'upload.html',  
+            	id:'upload',  
+        	})
+		})
+		mui('.cate_nav').on('tap','.enter',function(){
+			mui.openWindow({
+        		url:'reg.html',  
+            	id:'reg',  
+        	})
+		})
+		mui('.cate_nav').on('tap','.news',function(){
+			mui.openWindow({
+        		url:'xiaoxi.html',  
+            	id:'xiaoxi',  
+        	})
+		})
+		mui.plusReady(function(){			
+			nuller=plus.webview.currentWebview().user_id
+			if(nuller=='0'){
+				plus.storage.setItem('user_id','1')
+				id=plus.storage.getItem('user_id');
+			}else{
+				id=plus.storage.getItem('user_id')
+			}    		     	
+	     	getajax(id);
+	     	open(id);	     	
+		})		
+		function open(id){
+			$('.catet-attention').on('tap','.cate-pt',function(){	
+				var index=$(this).index();
+				ajaxMain('/Home/Home/follow',
+				{'ms_user_id':id},function(data){
+					mui.openWindow({
+			    		url:'../recipe/recipe_3.html',  
+			        	id:'recipe3',
+			        	extras:{
+			        		ms_follow_id:data.aa[data.aa.length-index-1].ms_follow_id
+			        	}		        	
+					})
+		    	})
+			})
+			$('.uppic').on('tap','.ct-menu-pic',function(){	
+				var index=$(this).index();
+				ajaxMain('/Home/Home/upload',
+				{'ms_user_id':id},function(data){
+					mui.openWindow({
+			    		url:'../recipe/recipe_2.html',  
+			        	id:'recipe2',
+			        	extras:{
+			        		ms_food_id:data.aa[data.aa.length-index-1].ms_food_id
+			        	}		        	
+					})
+		    	})
+			})
+			$('.shares').on('tap','.ct-menu-pic',function(){	
+				var index=$(this).index();
+				ajaxMain('/Home/Home/uploa',
+				{'ms_user_id':id},function(data){
+					mui.openWindow({
+			    		url:'../recommend/recommend1.html',  
+			        	id:'recommend1',
+			        	extras:{
+			        		delicious_food_id:data.aa[data.aa.length-index-1].delicious_food_id
+			        	}		        	
+					})
+		    	})
+			})
+			$('.collectfood').on('tap','.ct-menu-pic',function(){	
+				var index=$(this).index();
+				ajaxMain('/Home/Home/Collection',
+				{'ms_user_id':id},function(data){
+					mui.openWindow({
+			    		url:'../recipe/recipe_2.html',  
+			        	id:'recipe2',
+			        	extras:{
+			        		ms_food_id:data.aa[data.aa.length-index-1].ms_food_id
+			        	}		        	
+					})
+		    	})
+			})
+			$('.collectdeli').on('tap','.ct-menu-pic',function(){	
+				var index=$(this).index();
+				ajaxMain('/Home/Home/delicious_Collection',
+				{'ms_user_id':id},function(data){
+					mui.openWindow({
+			    		url:'../recommend/recommend1.html',  
+			        	id:'recommend1',
+			        	extras:{
+			        		delicious_food_id:data.aa[data.aa.length-index-1].ms_delicious_id
+			        	}		        	
+					})
+		    	})
+			})
+		}	
+	    function getajax(a){	    	
+	    	ajaxMain('/Home/Home/personal',
+				{ms_user_id:a},function(data){
+					if(data.return=1000){
+						data.b=data.b==null?0:data.b
+						data.bb=data.bb==null?0:data.bb
+						data.bbb=data.bbb==null?0:data.bbb;
+						data.aa[0].ms_user_share=data.aa[0].ms_user_share==null?0:data.aa[0].ms_user_share
+						$('.ct-portrait img').attr("src",manul+data.aa[0].ms_user_img);
+						$('.ct-amd').html(data.aa[0].ms_user_name);
+						$('.ct-sign').html(data.aa[0].ms_user_autograph);
+						$('.upnum').html(data.b);
+						$('.sharenum').html(data.aa[0].ms_user_share);
+						$('.connum').html(data.bb);
+						$('.collnum').html(data.bbb);
+					}
+			})
+	    	ajaxMain('/Home/Home/upload',
+				{ms_user_id:a},function(data){
+					if(data.aa!=''){
+						for(var i=0;i<data.aa.length;i++){
+						var div=document.createElement('div');
+						div.className = 'mui-col-xs-4 ct-menu-pic';	
+						div.innerHTML='<img src="'+foodul+data.aa[i].ms_food_img+'" />'
+//						+'<span class="mui-badge mui-badge-inverted mui-icon mui-icon-closeempty"></span>'
+						upload=document.body.querySelector('.uppic');
+						upload.insertBefore(div, upload.firstChild);						
+						}
+					}					
+			});
+	    	ajaxMain('/Home/Home/follow',
+				{ms_user_id:a},function(data){
+					if(data.aa!=''){
+						function pulldownRefresh(){
+							setTimeout(function() {
+							for(var i=0;i<data.aa.length;i++){
+								var div=document.createElement('div');
+								div.className = 'cate-pt';					
+								div.innerHTML='<div class="cate-pic"><img src="'+manul+data.aa[i].ms_user_img+'"/>'															
+								+'</div><div class="cate-text"><h3>'+data.aa[i].ms_user_name+'</h3>'
+								+'<p>'+data.aa[i].ms_user_autograph+'</p></div><div class="cate-mutual">'
+								+'<a href="#" class="mui-icon iconfont icon-iconfontyiguanzhu"></a>'
+								+'</div>';
+								var table=document.body.querySelector('.catet-attention')
+								table.insertBefore(div, table.firstChild);
+								}
+							}, 1500);
+						}
+					}
+			})
+	    	ajaxMain('/Home/Home/uploa',
+				{ms_user_id:a},function(data){
+					alert(data.aa.length)
+					if(data.aa.length>0){
+						for(var i=0;i<data.aa.length;i++){
+						var div=document.createElement('div');
+						div.className = 'mui-col-xs-4 ct-menu-pic';	
+						div.innerHTML='<img src="'+deliul+data.aa[i].ms_delicious_img+'" />'
+						upload=document.body.querySelector('.shares');
+						upload.insertBefore(div, upload.firstChild);	
+						}
+					}					
+			})
+	    	ajaxMain('/Home/Home/Collection',
+				{'ms_user_id':a},function(data){
+					if(data.aa!=''){
+						for(var i=0;i<data.aa.length;i++){
+						var div=document.createElement('div');
+						div.className = 'mui-col-xs-4 ct-menu-pic';	
+						div.innerHTML='<img src="'+foodul+data.aa[i].ms_food_img+'" />'
+						upload=document.body.querySelector('.collectfood');
+						upload.insertBefore(div, upload.firstChild);	
+						}
+					}					
+			})
+	    	ajaxMain('/Home/Home/delicious_Collection',
+				{'ms_user_id':a},function(data){
+					if(data.aa!=''){
+						for(var i=0;i<data.aa.length;i++){
+						var div=document.createElement('div');
+						div.className = 'mui-col-xs-4 ct-menu-pic';	
+						div.innerHTML='<img src="'+deliul+data.aa[i].ms_delicious_img+'"/>'
+//						+'<span class="mui-badge mui-badge-inverted mui-icon mui-icon-closeempty"></span>'
+						upload=document.body.querySelector('.collectdeli');
+						upload.insertBefore(div, upload.firstChild);	
+						}
+					}					
+			})
+		}
+	</script>
+	</body>
+	
+
+</html>

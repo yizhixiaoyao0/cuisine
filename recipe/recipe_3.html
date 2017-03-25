@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>个人菜谱</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/media.css" rel="stylesheet" />
+		<link href="../css/icons-extra.css" rel="stylesheet"/>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/ajaxmain.js"></script>
+		<style>
+		*{font-family:simsun ;}
+		body,html{height: 100%;overflow: hidden;}		   
+    	ul li{list-style-type: none;}
+    	#header>.back{color:#fff ;font-size:0.55rem;}
+    	#header>.title{color: #fff;padding-top: 0.1rem;font-size:0.35rem;}
+    	.mui-content>img{
+    		width: 100%;
+    	}
+    	.mui-content{
+    		width: 100%;
+    	}    	
+    	.con_main{
+    		position:relative;
+    		top:-1.8rem;
+    		width:100%;   
+    		padding:0 15px; 		
+    	}
+    	.mui-active{color: #cb000a !important;}
+			.dome-person{width: 100%;position: relative;}
+			.intro{height:2.2rem;border-radius: 5px;background-color: #fff;box-shadow: 0 0 20px #ccc;opacity: 0.7;color: #423a3b;}
+			.intro div img{width:1.3rem;height: 1.3rem;border-radius: 50%;margin-top: 3px;float: left;}
+			.intro div{width:90px;font-size: 0.2rem;height:2.2rem;float: left;font-family: simsun;}
+			.intro div h4{width: 90px;height:0.4rem;padding: 8px 0 20px 0;}
+			.intro .head_pic{width: 23%;padding-left:0.1rem ;}
+			.intro .into_detail{width: 50%;padding-left: 0.1rem;}
+			/*.intro div em{height: 15px;float: left;padding: 0 10px 10px 0px;}*/
+			.intro div>span{font-size:0.25rem;margin-top: 0.15rem;}
+			.intro a{width: 60px;height: 20px;float:right;margin: 8px 5px 0 0;color: #cc000b;}	
+			.attention{width: 28%;height:0.5rem;background-color: #cc000b;border-radius: 5px;color: #ffffff;padding-top:0.05rem;font-size:0.3rem;position: absolute;left: 36%;top:1.9rem;}
+			.sampling{height:4.8rem;border-radius: 5px;margin-top:0.55rem;background-color: #ffffff;}
+			.mui-control-content {
+				background-color: white;
+				min-height:6.6rem;
+			}
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			#sliderProgressBar{background-color:#fff;margin-left: 8%;}
+			.mui-slider .heji a{width:1.2rem;height:0.60rem;float: left;margin:5px 0px 10px 10px;font-size:0.28rem;}
+			.mui-slider  .list li a img{width: 100%;height: 85px;}
+			.mui-slider .list li a div{margin-left: 3%; color: #000000;font-size: 12px;}
+			.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item{
+				border: 0;
+			}
+			/**/
+			.mui-icon-extra{
+				font-size: 0.25rem;
+			}
+			.mui-icon-extra span{
+				margin-left: 0.1rem;
+				font-size: 0.23rem;
+			}
+		</style>
+	</head>
+	<body>
+		<header id="header" class="mui-bar mui-bar-transparent" style="background-color:rgba(247,247,247,0)">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left back"></a>
+			<h1 class="mui-title title">个人菜谱</h1>
+		</header>
+		<div class="mui-content">
+			<img src="../img/head_01.jpg"/>
+			<div class="con_main">
+				<div class="dome-person">
+					<div class="intro">
+						<div class="head_pic"><img src=""/></div>
+						<div class="into_detail">
+							<h4></h4>
+							<span>男 </span>
+							<span></span>
+							<br />
+							<span class="sign"></span>							
+						</div>
+						<a href="#" class="shoucan"><span class="mui-icon-extra mui-icon-extra-heart" ><span></span></span></a>				
+					</div>
+					<button class="attention">关注</button>
+					<div class="sampling">
+						<div id="slider" class="mui-slider">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted heji">
+					<a class="mui-control-item mui-active" href="#item1mobile">菜谱合集</a>
+					<a class="mui-control-item " href="#item2mobile">美食推荐</a>
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-2"><div style="background-color: #cb000a;width: 0.45rem;height: 100%;"></div></div>
+				<div class="mui-slider-group slider_group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								 <ul class="mui-table-view mui-grid-view list list1">
+					                	<!--<li class="mui-table-view-cell mui-col-xs-4 ">            
+						                	<a href="#">
+						                		<img class="" src="../img/1.png">
+						                		<div class="">水果沙拉</div>
+						                	</a>
+						                </li>						             -->
+					            </ul>							
+							</div>
+						</div>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll2" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view mui-grid-view list list2">
+				                	<!--<li class="mui-table-view-cell mui-col-xs-4 ">            
+					                	<a href="#">
+					                		<img class="" src="../img/2.png">
+					                		<div class="">水果沙拉</div>
+					                	</a>
+					                </li>-->
+					            </ul>									
+							</div>
+						</div>
+					</div>
+				</div>						    					
+				</div>
+		 	</div>
+		 	</div>
+		 	</div>
+		</div>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script src="../js/ajaxmain.js"></script>
+		<script type="text/javascript">
+		mui.init({});
+		var i=0;
+		var manul='http://192.168.1.107/MS_progect/Uploads/ms_user_img/';
+		var foodul='http://192.168.1.107/MS_progect/Uploads/ms_food_img/';
+		var delul='http://192.168.1.107/MS_progect/Uploads/ms_delicious_img/'
+		mui('.mui-scroll-wrapper').scroll({
+			scrollY: true, 
+			deceleration: 0.0005
+		});
+  		mui.plusReady(function(){
+	     	myid=plus.storage.getItem('user_id');
+	     	otherid=plus.webview.currentWebview().ms_follow_id;
+	     	follow(myid,otherid);
+	     	eachtap(myid,otherid);
+		})
+  		function eachtap(id,other){
+  			$('.list1').on('tap','li',function(){
+  				var index=$(this).index();
+  				ajaxMain('/Home/Home/personal_Menu',
+  				{'ms_user_id':id,'ms_follow_id':other},function(data){
+	  				mui.openWindow({
+	  					url:'recipe_2.html',
+	  					id:'recipe2',
+	  					extras:{
+	  						ms_food_id:data.aaa[data.aaa.length-index-1].ms_food_id
+	  					}
+	  				})
+  				})
+  			})
+			$('.list2').on('tap','li',function(){			
+				var index=$(this).index();
+				ajaxMain('/Home/Home/uploa',
+				{'ms_user_id':other},function(data){
+	  				mui.openWindow({
+	  					url:'../recommend/recommend1.html',
+	  					id:'recommend1',
+	  					extras:{
+	  						delicious_food_id:data.aa[data.aa.length-index-1].delicious_food_id
+	  					}
+	  				})
+				})
+				
+			})
+			mui('.intro').on('tap','.shoucan',function(){
+				++i;
+				if(i%2==0){
+					$(this).removeClass('mui-icon-extra-heart').addClass('mui-icon-extra-heart-filled');
+				}else{
+					$(this).removeClass('mui-icon-extra-heart-filled').addClass('mui-icon-extra-heart');
+				}				
+				ajaxMain('/Home/Home/Add_attention',{ms_user_id:id,ms_follow_id:other},
+				function(data){
+					alert('已关注');
+				})
+			})
+  		}
+  		function follow(id,other){
+  			ajaxMain('/Home/Home/personal_Menu',
+  			{'ms_user_id':id,'ms_follow_id':other},function(data){
+  				if(data.retur=='1006'){
+  					$('.attention').html('关注');
+  				}else if(data.retur=='1007'){
+  					$('.attention').html('已关注')
+  				}
+  				$('.into_detail h4').html(data.aa[0].ms_user_id);
+  				$('.into_detail .sign').html(data.aa[0].ms_user_autograph);
+  				$('.head_pic img').attr('src',manul+data.aa[0].ms_user_img);
+  				$('.mui-icon-extra span').html(data.bbb);  				
+  				if(data.aaa!=""){
+  					for(var i=0;i<data.aaa.length;i++){
+  						var li=document.createElement('li');
+						li.className = 'mui-table-view-cell mui-col-xs-4';	
+						li.innerHTML='<a href="#"><img src="'+foodul+data.aaa[i].ms_food_img+'" />'
+						+'<div class="">'+data.aaa[i].ms_food_name+'</div></a></li>'  
+						upload=document.body.querySelector('.list1');	
+						upload.insertBefore(li, upload.firstChild);
+  					}
+  				}
+			})
+  			ajaxMain('/Home/Home/uploa',
+  			{'ms_user_id':other},function(data){
+  				if(data.aa!=""){
+  					for(var i=0;i<data.aa.length;i++){
+  						var li=document.createElement('li');
+						li.className = 'mui-table-view-cell mui-col-xs-4';	
+						li.innerHTML='<a href="#"><img src="'+delul+data.aa[i].ms_delicious_img+'" />'
+						+'<div class="">'+data.aa[i].ms_delicious_name+'</div></a></li>'  
+						upload=document.body.querySelector('.list2');	
+						upload.insertBefore(li, upload.firstChild);
+  					}
+  				}
+			})
+  		}		
+		</script>
+	</body>
+
+</html>

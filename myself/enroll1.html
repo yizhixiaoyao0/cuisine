@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>登录注册主页面</title>
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/media.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/longin.css" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+
+	</head>
+
+	<body>
+		<div class="register">
+			<div class="eon-pic">
+				<img src="../img/reg-pic.png" />
+			</div>			
+			<!--   注册-->
+			<div class="mui-content eon-content">
+				<div class="eon-row">
+					<a href="#" class="eon-btn eon-btn1">手机号码注册</a>
+					<a href="#" class="eon-btn eon-btn2">登录</a>
+					<a href="" class="eon-btn eon-else">使用其他账号登录</a>
+
+				</div>
+                 <!-- 链接-->
+				<div class="eon-row"> 
+					 <ul>
+						<li>
+							<a href="" class="mui-icon mui-icon-weixin"></a>
+						</li>
+						<li>
+							<a href="" class="mui-icon mui-icon-qq "></a>
+						</li>
+						<li>
+							<a href="" class="mui-icon mui-icon-weibo" ></a>
+						</li>
+					</ul>
+
+				</div>
+			  <!--稍后注册-->
+			   <div class="eon-later">
+			   	   <a href="">稍后注册<span class="mui-icon mui-icon-arrowright"></span></a>
+			   </div>
+			
+			
+			</div>
+
+		</div>
+		<script type="text/javascript">
+			mui('.eon-row').on('tap','.eon-btn1',function(){
+				mui.openWindow({
+					url:'enroll2.html',  
+		            id:'enroll2',   
+				})
+			})
+			mui('.eon-row').on('tap','.eon-btn2',function(){
+				mui.openWindow({
+					url:'login.html',  
+		            id:'login',   
+				})
+			})
+			mui('.eon-later').on('tap','a',function(){
+				mui.openWindow({
+					url:'../home/home_model.html',  
+		            id:'home',
+		            extras:{								
+						con_user_id:'0',
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

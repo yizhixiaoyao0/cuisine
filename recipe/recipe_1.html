@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>名人菜谱首页</title>  
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link href="../css/iconfont.css" rel="stylesheet"/>
+    <link href="../css/media.css" rel="stylesheet" />
+    <script src="../js/mui.min.js"></script>
+    <script src="../js/jquery-3.1.1.js"></script>
+    <link rel="stylesheet"  href="../css/longin.css"/>
+    <style>   	
+    	img{display: block;}
+    	.kong{width: 100%;height: 44px;}
+    	.mui-bar-tab .mui-tab-item.mui-active{color: #cc000b;} /*头部*/ 
+    	.list a{display: block;}
+    	.list{margin-bottom: 0.2rem;box-shadow: 0 8px 10px #ccc;} 
+    	.mui-content{height:12.7rem !important;} 	
+    	.mui-bar-nav~.content,.mui-bar-nav~.content>.caipu,.mui-bar-nav~.content>ul>li{padding: 0;margin: 0 0 20px 0;position: relative;}
+    	.tu{width: 100%;height:5.5rem;}   	
+    </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav" style="background-color: #cc000b;">
+		<h1 class="mui-title"style="color:#fff;" >名人菜谱</h1>
+	</header>	
+	<div class="mui-content content mui-scroll-wrapper" id="pullrefresh">	
+		<div class="mui-scroll">
+			<ul class="mui-table-view caipu" id="recipe">
+				<!--<li class="mui-table-view-cellv list">
+					<a href="#" class="tointro">
+						<img class="tu" src="../img/1.png" />
+				
+					</a>
+				</li>			-->
+			</ul>
+		</div>		
+	</div>	
+	<script src="../js/jquery-3.1.1.js"></script>
+	<script src="../js/ajaxmain.js"></script>
+	<script>
+		mui.init({
+			pullRefresh: {
+				container: '#pullrefresh',
+				up: {
+					contentrefresh: '正在加载...',
+					callback: pullupRefresh
+				}
+			}
+		});
+		var ul='http://192.168.1.107/MS_progect/Uploads/ms_food_img/'
+		ajaxMain('/Home/Home/cp_recommend',{},function(data){
+			for(var i=data.d.length-3;i<data.d.length;i++){
+				var li = document.createElement('li');
+				li.className = 'list';	
+				li.innerHTML = '<a href="#" class="tointro"><img class="tu" src="'+ul+data.d[i].ms_food_img+'"/></a>'
+				recipe.insertBefore(li,recipe.firstChild);
+			}
+		})
+		var count = 0;
+		function pullupRefresh() {
+			setTimeout(function() {
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); 
+				var recipe=document.body.querySelector('#recipe');
+				var len=document.body.querySelectorAll('.list').length;
+				ajaxMain('/Home/Home/cp_recommend',{},function(data){
+					
+					leng=data.d.length-len;
+					for(var i=leng-1;i>leng-4&&i>=0;i--){
+						var li = document.createElement('li');
+						li.className = 'list';						
+						li.innerHTML = '<a href="#" class="tointro"><img class="tu" src="'+ul+data.d[i].ms_food_img+'" /></a>'
+						recipe.appendChild(li);
+					}												
+				})				
+			}, 1500);
+		}		
+		 $("#recipe").on("tap",'.list',function(){
+			var index=$(this).index();
+			ajaxMain('/Home/Home/cp_recommend',{},function(data){
+				len=data.d.length;
+				mui.openWindow({
+					url:'recipe_2.html',  
+		            id:'tointro',  
+	       			extras:{
+	       				ms_food_id:data.d[len-index-1].ms_food_id
+	       			}
+				})
+			})
+			
+		})
+		
+	</script>
+</body>
+</html>

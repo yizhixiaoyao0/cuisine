@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>上传食谱</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />	
+		<link href="../css/media.css" rel="stylesheet"/>
+		<link href="../css/app.css" rel="stylesheet" />
+		<script src="../js/pic.js"></script>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		img{border: none;display: block;}
+			div>.mui-title,.back{
+				color: #fff;
+				font-size: 0.3rem;
+			}
+			.mui-content{
+				width: 100%;
+				background-color: #fff;
+				margin-top: 40px;
+				
+			}
+			.upload,.upload>a{
+				text-align: center;
+				width: 100%;
+				height: 2.6rem;
+				background-color: #ececec;
+				padding-bottom: 0.3rem;
+			}
+			.upload>a>img{
+				margin:0 auto;
+				height:90%;
+			}
+			.main_text{
+				width: 90%;
+				margin: auto;
+				background-color: #fff;
+				min-height:8.45rem ;
+			}
+			.main_text input{
+				font-size: 0.3rem;
+				color: #777;
+				padding:0.35rem 0 0.1rem 0.15rem;
+				height: 0.8rem;
+				border: none;
+				width: 80%;
+				margin-top: 0.15rem;
+			}
+			.row{
+				border-bottom: 1px solid #ccc !important;
+				color:#777;
+				border-bottom: 0;
+			}
+			.step{
+				padding: 0 !important;
+			}
+			.title{
+				width: 100%;
+				text-align: center;
+				font-size:0.45rem;
+				height:1.3rem;
+				display: flex !important;
+				align-items: center;
+				justify-content: center;
+				color: #777 !important;
+				cursor: pointer;
+				margin-left: 2% !important;
+			}
+			.main_text .step input{
+				padding:0 0 0 0.15rem;
+				height: 0.8rem;
+				margin-bottom: 5px !important;
+			}
+			textarea{
+				height:1.5rem;
+				color: #777;
+				padding:0 0 0 0.15rem;
+				height: 1.8rem;
+				margin-bottom: 0;
+			}
+			.main_text .public{
+				position: fixed !important;
+				bottom: 0rem;
+				width:74%;
+				left: 13%;
+				padding: 0 !important;
+				height: 0.7rem ;
+				color: #fff ;	
+				text-align: center;		
+				background-color:#cc000b ;
+				justify-content: center;
+			}
+			.mui-table-view-cell.mui-active {
+    			background-color:#fff;
+			}
+			 #picture {
+			 	position: fixed;
+			 	top:4.0rem;
+			 	width: 80%;
+			 	margin-left: 10%;
+			 }
+			 .text {
+			 	color: #404040 !important;
+			 	font-size:0.35rem;
+			 }
+			 .text span{
+			 	display: inline-block; 	
+			 	display: block;
+			 	width: 100%;
+			 	height: 100%;
+			 }
+			 .btn-cell{
+			 	height: 0.75rem;
+			 }
+	
+		</style>
+		<script src="../js/mui.min.js"></script>
+	</head>
+	<body>
+		<div class="mui-bar mui-bar-nav" style="background-color: #cc000b;">
+			<a class="mui-icon mui-icon-left-nav mui-action-back mui-pull-left back"></a>
+			<h1 class="mui-title">上传美食</h1>			
+		</div>		
+		<div class="mui-content">
+			<div class="upload">
+				<a href="#picture" href="#" class="pict">
+					<img src="../img/tianjia.png" id="show"/>
+					<p style="font-size: 0.28rem;">上传封面</p>
+				</a>								
+			</div>
+			<div class="main_text">
+				<form method="post" class="mui-table-view"	enctype="multipart/form-data" id="myForm"  target='id_iframe'>
+					<input type="file" accept="image/*" style="display: none;" class="pick" name="photo"/>
+					<input type="hidden" value="" name="ms_user_id" class="nameid" />
+					<div class="mui-row row">
+						<input type="text" placeholder="请输入菜食名称" name="ms_delicious_name" class="cname"/>
+					</div>
+					<div class="mui-row mui-table-view-cell step row">
+						<a class="title">——美食介绍——</a>
+						<textarea class="mui-pull-left" name="ms_delicious_introduce" class="intro"></textarea>
+					</div>
+
+					<div class="mui-table-view-cell step row">
+						<a class="title">——营养价值——</a>						
+						<textarea class="mui-pull-left" class="nutrition" name="ms_delicious_nutrition"></textarea>
+					</div>
+					<div class="mui-row mui-input-row row">
+						<label class="key">类别</label>
+						<select class="choose" name="ms_delicious_type" id='list'>
+							<option value="">请选择类别</option>
+							<option value="1" name="ms_delicious_type">热菜</option>
+							<option value="2" name="ms_delicious_type">面食</option>
+							<option value="3" name="ms_delicious_type">饮料</option>
+							<option value="4" name="ms_delicious_type">汤品</option>
+						</select>
+					</div>
+					<input class="mui-btn mui-btn-danger public" type="submit" value="上传美食"/>
+				</form>
+				<iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe>
+			</div>
+		</div>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script>
+		mui.init();
+		$('.pict').on('click',function(){
+				$('.pick').trigger('click');
+			})
+		$('input[type="file"]').change(function(){
+			var file=this.files[0];
+			var reader=new FileReader();
+			reader.onload = function(evt){
+			$('#show').show().attr('src',evt.target.result);
+			}
+			reader.readAsDataURL(file);
+		});				
+		mui.plusReady(function(){
+			id=plus.storage.getItem('user_id');
+			$('.nameid')[0].value =id;
+			$('form')[0].action='http://192.168.1.107/MS_progect/index.php/Home/home/delicious_food';			
+			$('.public').on('tap',function(){
+				if(show.src=='../img/tianjia.png'){
+					alert('美食图片不见啦(っ´Ι`)っ')
+				}else if($('.cname')[0].value==''){
+					alert('美食名字不能空嗒o(￣ε￣*)')
+				}else if($('.intro').html()==''){
+					alert('请输入美食介绍<(*￣▽￣*)/')
+				}else if($('.nutrition').html()==''){
+					alert('好想知道营养价值(¯﹃¯)')
+				}else if($("#list option:selected").html()=='请选择类别'){
+					alert('请选择食物类型');
+				}else{
+					$("form").submit(function(e){
+						alert('发布成功');
+					})
+				}								
+			})		
+		})
+		</script>
+	</body>
+</html>

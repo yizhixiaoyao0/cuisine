@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>登录</title>
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/media.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/longin.css" />
+	</head>
+	<body>
+		<div class="register">
+			<!--头部	-->
+			<header class="mui-bar mui-bar-nav reg-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			</header>
+			<!--   图片-->
+			<div class="reg-pic">
+				<img src="../img/reg-pic.png" />
+			</div>
+			
+			<div class="reg-content">
+				<form>
+					<!--账户-->
+					<div class="account-pd">
+						<label>用户名</label>
+						<div class="mui-input-row">
+							<input type="text" class="mui-input-clear" value="" id="phone">
+						</div>
+					</div>
+					<!--密码-->
+					<div class="account-pd ">
+						<label>密码输入</label>
+						<div class="mui-input-row">
+							<input type="password" name="pw" class="mui-input-password" value="" id="passw"> 
+						</div>						
+					</div>
+				</form>
+				<!-- 登录按钮-->
+				<div class="reg-submint">
+					<input type="submit" name="" id="" value="登录" />
+					<div class="link-area">
+						<a href="" class="forget">忘记密码？</a>
+						<a href="" class="mui-pull-right">修改密码</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script src="../js/ajaxmain.js"></script>
+		<script type="text/javascript">				
+		mui.init();
+		mui('.link-area').on('tap','.forget',function(){
+			mui.openWindow({
+				url:'forget_password.html',  
+	            id:'forget',   
+			})
+		})
+		mui('.link-area').on('tap','.mui-pull-right',function(){
+			mui.openWindow({
+				url:'amend_password.html',  
+	            id:'amend',   
+			})
+		})
+		mui('.reg-submint').on('tap','input',function(){
+			if($('#phone').val()==''){
+				mui.toast('请输入手机号'); 
+				return false;
+			}else if($('#passw').val()==''){
+				mui.toast('请输入密码'); 
+				return false;
+			}else{
+				ajaxMain('/Home/Register/Sign_in', 
+					{ms_user_phone:$('#phone').val(),ms_user_password:$('#passw').val()},
+					function(data){						
+	                    if(data.return=='1000'){
+	                    	var num=data.userarr[0].ms_user_id;
+	                        mui.openWindow({
+								url:'../home/home_model.html',  
+							    id:'home',
+							    extras:{
+									ms_user_id:num
+								}
+							})
+	                        mui.plusReady(function(){
+								plus.storage.setItem('user_id',data.userarr[0].ms_user_id)
+							})			                        	                 
+	                    }else{
+		                   plus.nativeUI.toast('密码错误或无该用户', {verticalAlign: 'center'}); 
+		            	   return false ;
+			            } 
+		        })
+			}
+		})
+				
+		</script>
+	</body>
+</html>

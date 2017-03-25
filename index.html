@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/media.css" rel="stylesheet"/>
+    <script src="js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    </script>
+    <style>
+    	body,html,.mui-slider,.mui-slider-group,.mui-slider-item,img{
+    		height: 100%;
+    		width: 100%;
+    	}
+    	.exit{
+    		position: absolute !important;
+    		bottom:1.5rem;
+    		left:35%;
+    		height:1.0rem ;
+    		width: 30%;
+    		text-align: center;
+    		padding-top:0.5rem;
+    		font-size: 0.43rem;
+  			border-radius: 10px;
+  			font-family: simsun;
+  			z-index: 999;
+    		border: 1px solid #c7020f;
+    	}
+    	.mui-slider-indicator>.mui-indicator{
+    		width:0.13rem ;
+    		height: 0.13rem;
+    	}
+    </style>
+</head>
+<body>
+	<div class="mui-content">
+		<div class="mui-slider">
+		    <div class="mui-slider-group">
+		    <!--支持循环，需要重复图片节点-->
+		    	<div class="mui-slider-item"><img src="img/yindao.png" /></div>
+		   	    <div class="mui-slider-item"><img src="img/yindao2.png" /></div>
+		    	<div class="mui-slider-item" style="position: relative;"><img src="img/yindao3.png" /><a href="myself/enroll1.html" class="mui-btn mui-btn-danger mui-btn-outlined exit">立即体验</a></div>
+		    <!--支持循环，需要重复图片节点-->
+			</div>
+			<div class="mui-slider-indicator" style="position: absolute;bottom:1.5rem;">
+			    <div class="mui-indicator mui-active"></div>
+			    <div class="mui-indicator"></div>
+			    <div class="mui-indicator"></div>
+		  </div>	
+		</div>
+	</div>
+		
+	  <script>
+	  	mui.init();
+	  	var gallery = mui('.mui-slider');
+       //gallery.slider({interval:1000});	  	
+        document.querySelector('.mui-slider').addEventListener('slide', function(event) {
+        	if(event.detail.slideNumber==2){
+        		document.getElementsByClassName('mui-slider-indicator')[0].style.display="none";
+        		
+        	}	
+		});
+	  </script>
+	
+</body>
+</html>

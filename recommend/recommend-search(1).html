@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>搜索</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../js/mui.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/iconfont(1).css"/>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<link href="../css/media.css" rel="stylesheet" />
+		<link href="../css/longin.css"rel="stylesheet" />
+		<style>
+			input,a,span,ul,li{display: block;}
+			li{list-style: none;}
+			a{text-decoration: none;}
+			.mui-search .mui-placeholder{width: 60%;}
+			.head{background-color: #cc000b;width: 100%;padding: 0.2rem 0.5rem;}
+			.head .box{width: 82%;background-color: #ffffff;height:25px;border-radius: 0.13rem;}
+			.head .box span{width: 10%;color: #777777;font-size: 0.4rem;padding:0 0.3rem;line-height: 25px;}
+			.head .sousuo{width: 75%;height: 100%;border: 0;margin-left:0.5rem;padding: 0;color: #777777;font-size: 0.25rem;}
+			.quxiao{width: 15%;height: 100%;float:right;color: #ffffff;font-size: 0.26rem;padding:5px 0.15rem ;}
+			.history{background-color: #ffffff;padding: 0.24rem 0 0.16rem 5% ;margin-bottom: 0.13rem;}
+			.history label{font-size: 0.26rem;color: #404040;}
+			.history span{margin: 0 0 0.16rem 0;}
+			.history span a{color: #777777;margin-right: 3%;font-size: 0.43rem;}
+			.history ul{margin: 0;padding: 0;width: 100%;max-height:2.7rem;overflow: hidden;}	
+			.history li{width: 30%;display: block;float: left;}					
+			.history li a{border-radius:0.114rem;height: 0.65rem;width: 70%;font-size: 0.24rem;color: #777777;background-color: #cccccc;margin: 0.16rem 0 0.16rem 0;text-align: center;line-height: 0.65rem;}
+			.hot{background-color: #ffffff;padding: 0.34rem 0 0.23rem 5% ;height: 9.32rem;}
+			.hot label{font-size: 0.26rem;color: #404040;}
+			.hot span{margin: 0 0 0.16rem 0;}
+			.hot ul{margin: 0;padding: 0;}	
+			.hot li{width:35%;float: left;margin-bottom: 0.16rem;display: block;overflow: hidden;}					
+			.hot li a{font-size: 0.25rem;color: #777777;}
+			/**/
+			.head_pic{height:0.5rem;color: #777;}
+			.time{font-size: 0.25rem;}
+			.bot_box{position: relative;}
+			.bot_box p{height: 1.3rem;}
+			.list{padding-left: 0 !important;display: block;width: 100%;}
+			.list li{width: 30%;display: block;float: left;}
+			.list li a,.list li span{float: left;color: #777;}
+			.list li span{font-size: 0.30rem;margin-left: 0.08rem;}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav head" >	   
+    			<div class="mui-pull-left box mui-input-row">
+    				<span class="mui-icon mui-icon-search mui-pull-left"></span>
+    				<input type="text" class="sousuo mui-input-clear" placeholder="Search">
+    			</div>
+    			<a href="#" class="quxiao mui-action-back">取消</a>
+		</header>
+		<div class="mui-content content">
+			<ul class="mui-table-view table"></ul>
+			<div class="history">
+				<span >
+					<label>搜索历史</label>
+					<a class="mui-icon mui-icon-trash mui-pull-right delete"></a>
+				</span>
+				<ul class="his">
+				
+				</ul>
+				<!--<div class="j"></div>-->
+			</div>
+			<div class="hot">
+				<span><label>热门搜索</label></span>
+				<ul>
+					<li><a href="#" class="">1.红烧肉</a></li>
+					<li><a href="#">2.栀子花</a></li>
+					<li><a href="#">3.红烧肉</a></li>
+					<li><a href="#">4.红烧肉</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="j"></div>
+		<script src="../js/time.js"></script>
+		<script src="../js/ajaxmain.js"></script>
+		<script>
+		mui.init();
+		function plusReady(){
+			
+		}
+		
+		document.addEventListener("plusready",plusReady,false);
+		function setStorage(arr,set) {
+			plus.storage.setItem(arr,set);
+		}
+		function getStorage(sear) {
+			return plus.storage.getItem(sear);
+		}
+		function removeStorage(remove) {
+			plus.storage.removeItem(remove);
+		}		
+			var his=document.getElementsByClassName('his')[0];
+			var table=document.getElementsByClassName('table')[0];
+			var con='';
+			var count=0;
+			var sum='';
+			mui('.content').on('tap','.delete',function(){
+				removeStorage('fname')	;
+				removeStorage('id')	
+				his.innerHTML='';
+			})
+			//历史
+			$('.sousuo').bind('input propertychange', function(){
+				if($('.sousuo').val()!=''){
+					table.innerHTML='';
+					$('.table').css('display','block');
+					$('.history,.hot').css('display','none');											
+					ajaxMain('/Home/Home/search',{'ms_food_name':$('.sousuo').val()},
+					function(data){
+					if(data.return=='1000'){
+						var sum='';
+						for(var i=0;i<data.aa.length;i++){	
+							var time=data.aa[i].ms_food_time;
+							if(time!=null){
+								var date= new Date(Date.parse(time.replace(/-/g, "/")));
+								var a = date.getTime();
+								var getime=getDateDiff(a);
+							}else{
+								var getime=null;
+							}
+							sum+='<li class="mui-table-view-cell mui-media"><div>'
+							+'<img class="mui-media-object mui-pull-left" src="'+data.aa[i].ms_food_img+'">'
+							+'<div class="mui-media-body"><div><div class="head_pic">'
+							+'<img src="'+data.aa[i].ms_user_img+'" class="mui-pull-left"/>'
+							+'<span class="mui-pull-left">'+data.aa[i].ms_food_name+'</span>'
+							+'<span class="time mui-pull-right">'+getime+'</span></div>'
+							+'<div class="bot_box"><p >'+data.aa[i].ms_food_introduce+'</p><ul class="list">'
+							+'<li><a href="#" class="mui-icon iconfont icon-aixin"></a><span>'+data.aa[i].ms_food_like+'</span></li><li><a href="#" class="mui-icon iconfont icon-star-outline"></a><span>'+data.aa[i].ms_food_collection
+							+'</span></li><li><a href="#" class="mui-icon iconfont icon-liuyan"></a><span>'+data.aa[i].ms_food_comment+'</span></li>'
+							+'</ul>'
+						+'</div>'
+					+'</div>'
+				+'</li>'
+						}
+						table.innerHTML=sum;
+					}
+				})
+				}else{
+					$('.table').hide();
+					$('.history,.hot').css('display','block');		
+				}
+			})			
+			mui('.table').on('tap','li',function(){
+				var index=$(this).index();				
+				ajaxMain('/Home/Home/search',{'ms_food_name':$('.sousuo').val()},
+				function(data){				
+					var result=getStorage('fname')==null?[]:getStorage('fname').split(',');
+					var arr=getStorage('id')==null?[]:getStorage('id').split(',');
+					result.push(data.aa[data.aa.length-index-1].ms_food_name);
+					setStorage('fname',result.join(','));
+					arr.push(data.aa[data.aa.length-index-1].ms_food_id);
+					setStorage('id',arr.join(','));
+					mui.openWindow({
+		    			url: '../recipe/recipe_2.html', 
+		    			id:'recipe2',
+		    			extras:{
+		    				ms_food_id:data.aa[data.aa.length-index-1].ms_food_id
+		    			}
+	  				});	  				
+	  			})
+			})
+			mui.plusReady(function(){
+				var result=getStorage('fname')==null?[]:getStorage('fname').split(',');
+				var arr=getStorage('id')==null?[]:getStorage('id').split(',');
+				var length=result.length
+				for(var i=0;i<length;i++){
+					for(var j=i+1;j<length;j++){
+						if(result[i]==result[j]){
+							result.splice(j,1);
+						}
+					}
+					if(result[i]!=undefined){
+						var li=document.createElement('li');
+						li.className='list'
+						li.innerHTML='<a class="">'+result[i]+'</a>';
+						his.insertBefore(li,his.firstChild)
+					}
+				}
+				$('.his').on('tap','a',function(){
+					var index=$(this).parent().index();
+					mui.openWindow({
+			    		url: '../recipe/recipe_2.html', 
+			    		id:'recipe2',
+			    		extras:{
+			    			ms_food_id:arr[arr.length-1-index]
+			    		}
+			        })
+		    	})
+			})			
+			mui('.head').on('tap','.quxiao',function(){
+				$('.history,.hot').css('display','block');
+				$('.table').css('display','none');
+			})			
+		</script>
+	</body>
+
+</html>

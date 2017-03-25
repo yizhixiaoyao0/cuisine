@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>注册页面2</title>
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/media.css"/>
+	    <link rel="stylesheet" type="text/css" href="../css/longin.css"/>		
+	</head>
+	
+	<body>
+		<div class="register">
+			<!--头部	-->
+			<header class="mui-bar mui-bar-nav reg-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			</header>
+			<!--   图片-->
+			<div class="reg-pic">
+				<img src="../img/reg-pic.png" />
+			</div>
+			
+			<div class="reg-content">
+				<form>
+					<!--请输入手机号码-->
+					<div class="ch-enroll">
+						<label>请输入手机号码</label>
+						<input type="text" value="" id="phone">
+					</div>
+					<!--验证码-->
+					<div class="ch-enroll">
+						<a href="#" id="get_code" >获取验证码</a>
+						<input type="text" class="" id="u_code">
+					</div>					
+					<!--设置密码-->
+					<div class="ch-enroll">
+						<label class="ch-password">6-12位数字加字母组合密码</label>
+						<input type="password" id="passw" name="">
+					</div>
+													
+				</form>
+				<!-- 确认修改-->
+				<div class="reg-submint">
+					<input type="submit" name="" value="注册" />
+				</div>
+			</div>
+		</div>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script src="../js/ajax.js"></script>
+		<script>
+			mui('.ch-enroll').on('tap','#get_code',function(){
+				num();
+			})
+			mui('.reg-submint').on('tap','input',function(){
+				senmobile('Home/Register/register',
+				{'ms_user_phone':$('#phone').val(),'ms_user_password':$('#passw').val()},
+				function(data){
+                    if(data.return== '1003'){			                    	
+                       plus.nativeUI.toast('用户已存在！', {verticalAlign: 'center'}); 
+                        return false; 
+                    }else{
+						mui.openWindow({
+							url:'login.html',  
+							id:'login',   
+						})
+		            } 
+	            })
+			})
+		</script>
+	</body>
+</html>

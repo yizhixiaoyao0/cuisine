@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>评论</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet"  href="../css/iconfont.css"/>
+		<link href="../css/media.css" rel="stylesheet" />
+		<script src="../js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<style>
+		body{background-color:#fff;}
+			.content{width: 100%; border-bottom: 1px solid #ccc;background-color:#fff;}
+			.content .closs{float: right;color: #777;margin-right:2%;font-size:0.7rem;height: 100%;}
+			.intro{width: 94%;background-color: #fff;height:5.5rem;position: absolute;left: 3%;top:2.5rem;box-shadow: 0 0 20px #777777;border-radius: 8px}
+			.list{margin-top: 40px;}
+			 .mui-media-body{font-size: 0.38rem;color: #4b474c;}
+			 .mui-media-body>.mui-ellipsis{font-size: 0.3rem;margin-top: 0.15rem;}
+			.list li{height:2.3rem;padding:0.3rem 0.3rem;position: relative;}
+			.list li a img{border-radius: 50%;}			
+			.dianzan{width:100%;padding-top:0.1rem;position: absolute;bottom: 0.2rem;}
+			.zan{width:5%; color: #ccc;}
+			.dianzan span{color: #777;font-size:0.28rem;/*padding: 0 0.1rem 0 0.8rem;font-family: simsun;*/}			
+			.dianzan .nowtime{float:left;margin-left: 0.8rem;}
+			.dianzan .piont{float:right;margin-right:0.8rem;}
+			.piont span,.piont a{margin-right: 0.1rem;font-size: 0.28rem;}
+			.mui-active{color: #cc000b !important;}
+			.pinglun{font-size: 0.35rem;}
+			.footer{height: 45px;width: 100%;position:fixed;z-index: 999;top:7.8rem;border-top: 1px solid #ccc;}
+			.footer a span{color: #777;margin: 3px 0 0 35%;width: 10%;display: block;float: left;padding-top: 0.2rem;}
+			.footer a .add{margin-left: 0;width: 20%;}
+			.footer a{color: #777;font-size:0.35rem;text-align:center;}			
+			.yanse{color: #cc000b;}			
+			#comment .div{width: 100%;height:7.5rem;}
+			.write{height: 100%;display: none;}
+			.write span{color: #777;font-size: 0.20rem;padding-left: 0.1rem;}
+			.write span>span{margin-left: 0.1rem;}
+			.write input{width: 58%;border: none;}
+			.btn{height: 100%;width: 15%;font-size: 0.20rem;}
+			.name{font-size: 0.38rem;width: 100%;height: 0.4rem;padding-top: 0.1rem;}
+		</style>
+	</head>
+	<body>
+		<div id="comment">						
+			<div class="content mui-bar mui-bar-nav" >
+			    <a class="mui-action-back mui-icon mui-icon mui-icon-closeempty closs"></a>
+			    <h1 class="mui-title">评论</h1>
+			</div>
+			<div class="mui-scroll-wrapper div" id="pullrefresh">
+				<div class="mui-scroll">
+					<ul class="mui-table-view list">
+					    <!--<li class="mui-table-view-cell mui-media">
+					        <a href="javascript:;">
+					            <img class="mui-media-object mui-pull-left" src="../img/hd (1).png">
+					            <div class="mui-media-body">
+					               <p class="name"></p>
+					               <p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>	
+					            </div>		                			            
+					            <div class="dianzan"><span class="nowtime">1分钟</span>		
+					            <div class="piont"><span>500</span><a class="mui-icon iconfont icon-dianzan zan" href="#"></a></div>							
+					            </div>
+					        </a>
+					    </li>-->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+		    <a class="rehome">
+		        <span class="mui-icon iconfont icon-bianji "></span><span class="add">添加评论</span>        
+		    </a>
+		    <div class="write">
+				<span class="mui-icon iconfont icon-bianji "><span>添加评论...</span></span>		              
+			    <input type="text" name="review" class="rev"/>
+			    <button class="mui-btn mui-btn-danger mui-pull-right btn" >发送</button>
+		    </div>
+		</div>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script src="../js/ajaxmain.js"></script>
+		<script type="text/javascript">
+		mui.init({
+			pullRefresh: {
+				container: '#pullrefresh',
+				up: {
+					contentrefresh: '正在加载...',
+					callback: pullupRefresh
+				}
+			}
+			});
+			var con='';
+			var list=document.getElementsByClassName('list')[0]
+			mui('.mui-scroll-wrapper').scroll({
+				scrollY: true,
+				deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+			});
+			mui('.footer').on('tap','.rehome',function(){
+				$('.rehome').hide();
+				$('.write').show();
+				$('.rev').trigger('focus');
+			})
+			function write(id,food){
+				mui('.write').on('tap','.btn',function(){
+					if($('.rev').val()!=''){
+					$('.rehome').show();
+					$('.write').hide();
+						ajaxMain('/Home/home/comment',{ms_user_id:id,ms_food_di:food,ms_comment_word:$('.rev').val()},
+						function(data){
+				        	alert('发送成功');
+						})
+					}else{
+						alert('发送不能为空');
+					}					
+				})
+			}
+			mui.plusReady(function(){		
+				var foodid=plus.webview.currentWebview().ms_food_di==null?plus.webview.currentWebview().delicious_food_id:plus.webview.currentWebview().ms_food_di;
+				var myid=plus.storage.getItem('user_id');
+				write(myid,foodid);
+			})
+			var list=document.getElementsByClassName('list')[0]
+			mui.plusReady(function(){
+				if(plus.webview.currentWebview().ms_food_di==null){
+					var foodid=plus.webview.currentWebview().delicious_food_id;
+					var ul='/Home/home/Get_commen';
+				}else{
+					var foodid=plus.webview.currentWebview().ms_food_di;
+					var ul='/Home/home/Get_comments';
+				}
+				ajaxMain(ul,
+				{ms_food_di:foodid},function(data){	
+					for(var i=0;i<4&&i<data.d.length;i++){
+						data.d[i].ms_comment_fabulous=data.d[i].ms_comment_fabulous==null?0:data.d[i].ms_comment_fabulous
+						list.innerHTML+='<li class="mui-table-view-cell mui-media"><a href="javascript:;">'			        
+			            +'<img class="mui-media-object mui-pull-left" src="'+data.d[i].ms_comment_img+'"/>'
+			            +'<div class="mui-media-body"><p class="name">'+data.d[i].ms_comment_name+'</p>'
+			            +'<p class="mui-ellipsis">'+data.d[i].ms_comment_word+'</p></div>'
+			            +'<div class="dianzan"><span class="nowtime">'+data.d[i].ms_comment_time+'</span><div class="piont"><span>'+data.d[i].ms_comment_fabulous+'</span><a class="mui-icon iconfont icon-dianzan zan" href="#"></a></div></div>'
+			        +'</a></li>'				    
+					}				
+				})
+			})
+			var count = 0;
+			function pullupRefresh() {
+				setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2));
+					mui.plusReady(function(){
+						if(plus.webview.currentWebview().ms_food_di==null){
+							var foodid=plus.webview.currentWebview().delicious_food_id;
+							var ul='/Home/home/Get_commen';
+						}else{
+							var foodid=plus.webview.currentWebview().ms_food_di;
+							var ul='/Home/home/Get_comments';
+						}
+						ajaxMain(ul,{ms_food_di:foodid},
+						function(data){
+							var leng=document.getElementsByTagName('li').length;
+							for(var i=leng;i<leng+4&&i<data.d.length;i++){
+								data.d[i].ms_comment_fabulous=data.d[i].ms_comment_fabulous==null?0:data.d[i].ms_comment_fabulous
+							list.innerHTML+='<li class="mui-table-view-cell mui-media"><a href="javascript:;">'			        
+					            +'<img class="mui-media-object mui-pull-left" src="'+data.d[i].ms_comment_img+'"/>'
+					            +'<div class="mui-media-body"><p class="name">'+data.d[i].ms_comment_name+'</p>'
+					            +'<p class="mui-ellipsis">'+data.d[i].ms_comment_word+'</p></div>'
+					            +'<div class="dianzan"><span class="nowtime">'+data.d[i].ms_comment_time+'</span><div class="piont"><span>'+data.d[i].ms_comment_fabulous+'</span><a class="mui-icon iconfont icon-dianzan zan" href="#"></a></div></div>'
+					       		 +'</a></li>'
+							}										
+						})
+					})
+				}, 1000);
+			}			
+		</script>
+	</body>
+
+</html>

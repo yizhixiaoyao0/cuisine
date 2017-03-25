@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>美食详情</title>
+		<meta  name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link href="../css/media.css" rel="stylesheet"/>
+		<link href="../css/share.css" rel="stylesheet"/>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/share.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<style>		
+		*{color: #777777;}
+		a,img{display: block;}
+		img{border: none;}
+			.head a{color: #fff;font-size:0.6rem !important;}
+			.bgimg{width: 100%;}
+			.bgimg img{width: 100%;height:5.0rem;}
+			.intro{width: 94%;background-color: #ffffff;height:8.1rem;position: absolute;left: 3%;top:4.8rem;box-shadow: 0 0 20px #777777;border-radius: 8px;
+			padding-bottom: 0.5rem;
+			}
+			.meishi-intro img{width:0.8rem;height:0.8rem;border-radius: 50%;float: left;margin: 10px 5px 5px 10px;background-color: #ead4a6;}
+			.meishi-name{width:76%;height:0.3rem;padding:0.4rem 0.1rem 0 0.15rem;float: left;font-size: 0.35rem;}
+			.meishi-name .zhuanfa{font-size:0.6rem;color: #000000;}
+			.top_box{
+				height: 4.0rem;
+				position: relative;
+			}
+			.meishi-intro p,.meishi-value p{width: 100%;float: left;
+ 				text-align:left;
+ 				line-height: 0.5rem;
+ 				text-indent:2em;
+ 				padding:0 5% 0 5%;
+ 				font-size: 0.28rem;}
+			.ziti{width: 100%;height:0.8rem;border-bottom: 1px solid #ccc;position: absolute;bottom:0.2rem;}
+			.ziti a{width: 13.6%;margin:5px 5% 0 5%;color: #777;font-size: 0.35rem;}
+			.ziti a span{margin-left: 0.1rem;}
+			.result{color: #cc000b !important;}
+			.sma{font-size: 0.45rem !important;}
+			.sma span{font-size: 0.35rem;}
+			.meishi-value span{width: 95%;float: left;margin:0.3rem 0 0.2rem 5%;font-size: 0.35rem;}
+			.footer,.footer a{height: 0.95rem !important;}
+			.footer a span{color: #777;margin-left: -20%;font-size: 0.4rem !important;}
+			.footer a span em{font-size: 0.35rem;font-family: simsun;margin-left:0.3rem;}	 
+		</style>
+	</head>
+	<body>
+		<header  class="mui-bar mui-bar-transparent head" style="background-color:rgba(247,247,247,0)">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left back"></a>		
+		</header>
+		<div class="content bgimg">
+			<img src=""  class="bg"/>
+			<div class="intro mui-scroll-wrapper">
+				<div class="meishi-intro mui-scroll">
+					<div class="top_box">
+						<a href="#" class="tomyself"><img src=""></a>						
+						<div class="meishi-name">
+							<span></span><a href="#popover" id="openPopover" class="mui-icon iconfont icon-zhuanfa mui-pull-right zhuanfa" ></a>								
+						</div>
+						<p >
+							<!--可乐鸡翅是以鸡翅和可乐味主料制作而成的美食可乐鸡翅是以
+					  	鸡翅和可乐味主料制作而成的美食可乐鸡翅是以鸡翅和可乐味
+					  	主料制作而成的-->
+						</p>
+						<div class="ziti">
+							<a href="#" class="mui-icon iconfont icon-dianzan good"><span></span></a>
+							<a href="#" class="mui-icon iconfont icon-chaping nogood"><span></span></a>
+							<a href="#" class="mui-icon iconfont icon-shoucang sma"><span></span></a>
+							<a href="#" class="mui-icon iconfont icon-star-outline sma"></a>
+						</div>
+					</div>
+					<div class="meishi-value">
+						<span>营养价值</span>
+						<p><!--可乐鸡翅是以鸡翅和可乐味主料制作而成的美食可乐鸡翅是以
+				  	鸡翅和可乐味主料制作而成的美食可乐鸡翅是以鸡翅和可乐味
+				  	主料制作而成的可乐鸡翅是以鸡翅和可乐味主料制作而成的美食可乐鸡翅是以
+				  	鸡翅和可乐味主料制作而成的美食可乐鸡翅是以鸡翅和可乐味
+				  	主料制作而成的--></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="popover" class="mui-popover menu" >
+				<p>分享</p>
+				<div>
+				  <ul class="">
+				    <li class="">
+				    	<a href="#" onclick="shareMessage(0)">
+				    		<img src="../img/qq.png" />
+				    		<span>QQ好友</span>
+				    	</a>
+				    </li>
+				    <li class=""><a href="#" onclick="shareMessage(1)">
+				    	<img src="../img/weibo.png" />
+				    		<span>微博</span>
+				    </a></li>
+				    <li class=""><a href="#" onclick="shareMessage(2)" >
+				    	<img src="../img/friend.png" />
+				    		<span>朋友圈</span>
+				    </a></li>
+				    <li class=""><a href="#" onclick="shareMessage(2)">
+				    	<img src="../img/weixin.png"/>
+				    		<span>微信好友</span>
+				    </a></li>							    
+				  </ul>
+				</div>
+				<div class="div2">
+					<ul class="">
+					    <li class="">
+					    	<a href="#" onclick="shareMessage(0)">
+					    		<img src="../img/kongjian1.png" />
+					    		<span>QQ空间</span>
+					    	</a>
+					    </li>
+					    <li class=""><a href="#">
+					    	<img src="../img/link.png" />
+					    		<span>复制链接</span>
+					    </a></li>
+				   </ul>
+				</div>
+			  <button class="btn">取消</button>  
+		</div>
+		<nav class="mui-bar mui-bar-tab footer">
+		    <a class="mui-tab-item mui-active">
+		        <span class="mui-icon iconfont icon-xiaoxi "><span style="margin-left: 0.1rem;" class="review">0评论</span></span>		        
+		    </a>
+		</nav>
+		<script src="../js/ajaxmain.js"></script>
+		<script>
+		mui.init();
+		$(".btn").on("click",function(){
+			$("#popover,.mui-backdrop").toggle();
+		});
+		mui('.mui-scroll-wrapper').scroll({
+			scrollY: true, 
+			deceleration: 0.0005 
+		});
+		mui.plusReady(function(){
+			id=plus.webview.currentWebview().delicious_food_id;
+			firstRequest(id);
+		})
+		var ul="http://192.168.1.107/MS_progect/Uploads/ms_delicious_img/"; 
+		var manul='http://192.168.1.107/MS_progect/Uploads/ms_user_img/'
+		function firstRequest(foodid){
+			/*渲染页面*/
+			ajaxMain('/Home/Home/Menu_detail',{"delicious_food_id":foodid},
+			function(data){	
+				data.aa[0].ms_delicious_like=data.aa[0].ms_delicious_like==null?0:data.aa[0].ms_delicious_like;
+				data.aa[0].ms_delicious_not_good=data.aa[0].ms_delicious_not_good==null?0:data.aa[0].ms_delicious_not_good;
+				data.aa[0].ms_delicious_good=data.aa[0].ms_delicious_good==null?0:data.aa[0].ms_delicious_good;
+				data.aa[0].ms_delicious_comment=data.aa[0].ms_delicious_comment==null?0:data.aa[0].ms_delicious_comment;
+				$('.bg').attr('src',ul+data.aa[0].ms_delicious_img)
+				$('.meishi-name span').html(data.aaa[0].ms_user_name);
+				$('.tomyself img').attr('src',manul+data.aaa[0].ms_user_img);
+				$('.top_box p').html(data.aa[0].ms_delicious_introduce)
+				$('.icon-dianzan span').html(data.aa[0].ms_delicious_good);
+				$('.icon-chaping span').html(data.aa[0].ms_delicious_not_good);
+				$('.icon-shoucang span').html(data.aa[0].ms_delicious_like);
+				$('.review').html(data.aa[0].ms_delicious_comment+'评论');
+				$('.meishi-value p').html(data.aa[0].ms_delicious_nutrition);
+			})
+			/*点进个人菜谱*/
+			mui('.top_box').on('tap','.tomyself',function(){
+			ajaxMain('/Home/Home/Menu_detail',{"delicious_food_id":foodid},
+				function(data){
+					mui.openWindow({
+						url:'../recipe/recipe_3.html',
+						id:"recipe_3",	
+						extras:{
+							ms_follow_id:data.aaa[0].ms_user_id
+						}				
+					})	
+				})
+			})
+			/*点进评论*/
+			mui(".footer").on("tap",".mui-tab-item",function(){
+				mui.openWindow({
+					url:'recommendpinglun.html',
+					id:"recommendpinglun",
+					styles:{
+	        			top:'210px',//mui标题栏默认高度为45px；
+	        			bottom:'0'//默认为0px，可不定义；
+      				},
+      				extras:{
+      					ms_food_di:foodid
+      				}
+				})
+	  	})
+		}
+		</script>
+	</body>
+</html>

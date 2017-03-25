@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>消息页面</title>
+		<script src="../js/mui.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/media.css"/>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<style>
+		   *{
+		   	margin: 0;padding: 0;
+		   	list-style: none;
+		   	font-family: "宋体";
+		   
+		   }
+		   html,
+		   body{
+		   	width: 100%;
+		   	height: 100%;
+		   color: #404040;		   	
+		   }
+		   .advices{
+		   	background: #cb000a;
+		   }
+		 .advices a,.advices h1{
+			color: #fff;
+		 }	
+		/*内容	*/		
+		.ad-body .ad-text{
+			width: 100%;
+		}	
+		.ad-body .ad-text .name{		
+			font-size: 0.3rem;
+			color: #404040;
+		}							
+		.ad-body .ad-num p{
+			 font-size: 0.2rem;				
+		}			
+		/**/
+		.mark{
+			font-size: 0.08rem;
+		}
+		.context{
+			width: 80%;
+			float: left;
+		}	
+		.time{
+			font-size: 0.20rem;
+			color: #777;
+		}
+		.top{
+			width: 0.18rem;
+			height:0.18rem;
+			border-radius: 50%;
+			background-color: #dd524d;
+			display: block;
+		}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav advices">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">消息</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell  mui-media">
+					<a href="javascript:;" class="mui-row">
+						<div class="mui-col-xs-2">
+							<img class="mui-media-object mui-pull-left" src="../img/laba.png">
+						</div>						 
+						 <div class="mui-media-body  ad-body mui-col-xs-10">				 	
+						 	<div class="ad-text">
+						 		<span class="name">系统消息</span>					
+						 	</div>
+						 	<div>
+						 		<p class='mui-ellipsis context'>【温馨提示】您的美食账户里有1个20.0元的优惠券。</p>
+						 		<span class="mui-pull-right mark top" ></span>	
+						 	</div>	
+						</div>
+					</a>
+				</li>								
+				<li class="mui-table-view-cell  mui-media">
+					<a href="javascript:;" class="mui-row">
+						<div class="mui-col-xs-2">
+							<img class="mui-media-object mui-pull-left" src="../img/laowai.png">
+						</div>						 
+						 <div class="mui-media-body  ad-body mui-col-xs-10">				 	
+						 	<div class="ad-text">
+						 		<span class="name">Mr 李</span>
+						 		<span class='time mui-pull-right'>刚刚</span>								 						 		
+						 	</div>
+						 	<div>
+						 		<p class='mui-ellipsis context'>哇点赞我也要试试</p>
+						 		<span class="mui-badge mui-badge-danger mui-pull-right mark">1</span>	
+						 	</div>					 		
+						</div>
+					</a>
+				</li>
+								
+				<li class="mui-table-view-cell  mui-media">
+					<a href="javascript:;" class="mui-row">
+						<div class="mui-col-xs-2">
+							<img class="mui-media-object mui-pull-left" src="../img/laowai.png">
+						</div>						 
+						 <div class="mui-media-body  ad-body mui-col-xs-10">				 	
+						 	<div class="ad-text">
+						 		<span class="name">Mr 李</span>
+						 		<span class='time mui-pull-right'>11:20</span>								 						 		
+						 	</div>
+						 	<div>
+						 		<p class='mui-ellipsis context'>哇点赞我也要试试</p>
+						 		<span class="mui-badge mui-badge-danger mui-pull-right mark">1</span>	
+						 	</div>	
+						</div>
+					</a>
+				</li>				
+				<li class="mui-table-view-cell  mui-media">
+					<a href="javascript:;" class="mui-row">
+						<div class="mui-col-xs-2">
+							<img class="mui-media-object mui-pull-left" src="../img/muwu.png">
+						</div>						 
+						 <div class="mui-media-body  ad-body mui-col-xs-10">				 	
+						 	<div class="ad-text">
+						 		<span class="name">Mr 李</span>
+						 		<span class='time mui-pull-right'>11:21</span>								 						 		
+						 	</div>
+						 	<div>
+						 		<p class='mui-ellipsis context'>哇点赞我也要试试</p>
+						 		<span class="mui-badge mui-badge-danger mui-pull-right mark">1</span>	
+						 	</div>	
+						</div>
+					</a>
+				</li>				
+			</ul>
+		</div>
+	</body>		
+	<script>
+		mui.init({
+			swipeBack:true
+		})
+	</script>
+</html>
